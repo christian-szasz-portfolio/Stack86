@@ -1,0 +1,23 @@
+<div
+  class="modal-backdrop"
+  tabindex="-1"
+  (click)="onBackdropClick($event)"
+  (keydown.escape)="onEscape()"
+>
+  <div class="modal-shell" role="dialog" aria-modal="true">
+    <header class="modal-header">
+      <span>{{ title() }}</span>
+      @if (showClose()) {
+        <button type="button" class="modal-close" (click)="dismiss.emit()" aria-label="Close">
+          ×
+        </button>
+      }
+    </header>
+    <div class="modal-body">
+      <ng-content></ng-content>
+    </div>
+    <footer class="modal-footer">
+      <ng-content select="[modalFooter]"></ng-content>
+    </footer>
+  </div>
+</div>

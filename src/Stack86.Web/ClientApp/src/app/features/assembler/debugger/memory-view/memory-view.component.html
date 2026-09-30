@@ -1,0 +1,35 @@
+<emu-panel-header title="Memory" icon="memory" />
+<div class="memory-toolbar" data-testid="asm-memory-toolbar">
+  <p>Address:</p>
+  <input
+    type="text"
+    class="address-input"
+    data-testid="asm-memory-address-input"
+    [value]="addressInput()"
+    (input)="onAddressInput($event)"
+    (keyup.enter)="onAddressSubmit()"
+    maxlength="4"
+    placeholder="0000"
+  />
+  <button class="jump-btn" data-testid="asm-memory-jump-zero" title="Go to 0000h" (click)="jumpTo(0)">0000h</button>
+  <button class="jump-btn" data-testid="asm-memory-jump-stack" title="Go to stack" (click)="jumpToStack()">Stack</button>
+  <button class="jump-btn" data-testid="asm-memory-jump-data" title="Jump to first non-zero data" (click)="jumpToData()">Data</button>
+</div>
+<div class="memory-content" data-testid="asm-memory-content">
+  <div class="memory-header">
+    <span class="addr-col">Addr</span>
+    @for (i of [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]; track i) {
+      <span class="byte-col">{{ i.toString(16).toUpperCase() }}</span>
+    }
+    <span class="ascii-col">ASCII</span>
+  </div>
+  @for (row of rows(); track row.address) {
+    <div class="memory-row">
+      <span class="addr-col">{{ row.address }}</span>
+      @for (byte of row.bytes; track $index) {
+        <span class="byte-col" [class.nonzero]="byte !== '00'" [class.changed]="row.changed[$index]">{{ byte }}</span>
+      }
+      <span class="ascii-col">{{ row.ascii }}</span>
+    </div>
+  }
+</div>

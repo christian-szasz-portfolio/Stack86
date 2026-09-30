@@ -1,0 +1,15 @@
+<div class="tab-bar">
+  @for (tab of tabs(); track tab.id) {
+    <button
+      class="tab-bar__tab"
+      [class.tab-bar__tab--active]="activeTab() === tab.id"
+      (click)="selectTab(tab.id)"
+      [attr.data-testid]="'console-tab-' + tab.id"
+    >
+      {{ tab.label }}
+      @if (getBadge(tab.id); as badge) {
+        <span class="tab-bar__badge" [class.tab-bar__badge--error]="badge.severity === ConsoleSeverity.Error" [class.tab-bar__badge--warning]="badge.severity === ConsoleSeverity.Warning">{{ badge.count }}</span>
+      }
+    </button>
+  }
+</div>

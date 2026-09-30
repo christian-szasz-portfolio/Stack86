@@ -1,0 +1,75 @@
+@use '../../../../shared/styles/panel' as *;
+@use '../../../../shared/styles/typography' as *;
+@use '../../../../shared/styles/variables' as *;
+@use '../../../../shared/styles/animations' as *;
+
+:host {
+  @include panel-host;
+  @include animate-fadeIn;
+}
+
+.stack-content {
+  flex: 1;
+  overflow: auto;
+  padding: $space-4 $space-8;
+  @include mono-data(11px);
+}
+
+.stack-header {
+  display: flex;
+  gap: $space-16;
+  color: var(--text-secondary);
+  font-weight: 600;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: $space-2;
+  margin-bottom: $space-2;
+  position: sticky;
+  top: 0;
+  background-color: var(--bg-secondary);
+  z-index: 1;
+}
+
+.stack-row {
+  display: flex;
+  gap: $space-16;
+  padding: 1px $space-4;
+  border-radius: $radius-sm;
+
+  &:nth-child(even) {
+    background-color: var(--row-alt);
+  }
+
+  &:hover {
+    background-color: var(--row-hover);
+  }
+
+  &.current-sp {
+    background-color: rgba(86, 156, 214, 0.15);
+    font-weight: 600;
+  }
+
+  &.changed {
+    background-color: var(--stack-changed-bg);
+
+    .val-col,
+    .bin-col {
+      color: var(--stack-changed-fg);
+      font-weight: 600;
+    }
+  }
+}
+
+.addr-col {
+  width: 50px;
+  color: var(--warning);
+}
+
+.val-col {
+  color: var(--text-primary);
+}
+
+.bin-col {
+  color: var(--text-secondary);
+  font-size: 10px;
+  letter-spacing: 0.5px;
+}

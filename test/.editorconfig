@@ -1,0 +1,19 @@
+[*.cs]
+# XML doc analysis disabled (no doc generation in tests)
+dotnet_diagnostic.SA0001.severity = none
+# Global usings outside namespaces are intentional in tests
+dotnet_diagnostic.SA1200.severity = none
+# Tests routinely use long descriptive names with underscores
+dotnet_diagnostic.CA1707.severity = none
+# Test classes don't need docs / file headers
+dotnet_diagnostic.SA1600.severity = none
+dotnet_diagnostic.SA1601.severity = none
+dotnet_diagnostic.SA1602.severity = none
+dotnet_diagnostic.SA1604.severity = none
+dotnet_diagnostic.SA1611.severity = none
+dotnet_diagnostic.SA1615.severity = none
+dotnet_diagnostic.SA1623.severity = none
+dotnet_diagnostic.SA1633.severity = none
+dotnet_diagnostic.CS1591.severity = none
+# null-forgiveness in tests is common
+dotnet_diagnostic.CS8618.severity = warning

@@ -1,0 +1,47 @@
+@use 'variables' as *;
+
+// ── Select dropdown ──
+@mixin select-base {
+  padding: $space-4 $space-8;
+  font-family: var(--font-ui);
+  font-size: 12px;
+  background-color: var(--bg-input);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  border-radius: $radius-sm;
+  cursor: pointer;
+  transition: border-color $transition-normal;
+  outline: none;
+
+  &:focus,
+  &:focus-visible {
+    border-color: var(--accent);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+// ── Text input ──
+@mixin input-base {
+  padding: $space-2 $space-4;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  background-color: var(--bg-input);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  border-radius: $radius-sm;
+  transition: border-color $transition-normal;
+  outline: none;
+
+  &:focus,
+  &:focus-visible {
+    border-color: var(--accent);
+  }
+
+  &::placeholder {
+    color: var(--text-secondary);
+  }
+}

@@ -1,0 +1,28 @@
+<emu-console-tab-bar [(activeTab)]="activeTab" [badges]="badges()" [tabs]="consoleTabs" />
+<div class="console-content" data-testid="compile-console-list">
+  @switch (activeTab()) {
+    @case (ConsoleTab.Problems) {
+      @if (problemLines().length === 0) {
+        <emu-empty-state message="No errors or warnings" icon="check" />
+      } @else {
+        @for (line of problemLines(); track $index) {
+          <span class="console-line" [attr.data-testid]="'compile-console-line'" [class.console-line--error]="line.type === ConsoleLineType.Error" [class.console-line--warning]="line.type === ConsoleLineType.Warning">{{ line.text }}</span>
+        }
+      }
+    }
+    @case (ConsoleTab.BuildLog) {
+      @if (!loading() && buildLogLines().length === 0) {
+        <emu-empty-state message="Build log will appear here" icon="file-lines" />
+      } @else {
+        @for (line of buildLogLines(); track $index) {
+          <span class="console-line" [attr.data-testid]="'compile-console-line'" [class.console-line--error]="line.type === ConsoleLineType.Error" [class.console-line--warning]="line.type === ConsoleLineType.Warning" [class.console-line--info]="line.type === ConsoleLineType.Info">{{ line.text }}</span>
+        }
+        @if (loading()) {
+          <div class="console-status">
+            <fa-icon icon="spinner" animation="spin" />
+          </div>
+        }
+      }
+    }
+  }
+</div>

@@ -1,0 +1,29 @@
+<emu-panel-header title="Stack" icon="layer-group">
+  <emu-settings-dropdown [options]="settingsOptions()" (optionToggled)="onSettingToggled($event)" />
+</emu-panel-header>
+<div class="stack-content" data-testid="asm-stack-content">
+  @if (entries().length === 0) {
+    <emu-empty-state message="Stack is empty" icon="layer-group" />
+  } @else {
+    <div class="stack-header">
+      <span class="addr-col">Address</span>
+      @if (showHex()) {
+        <span class="val-col">Value</span>
+      }
+      @if (showBinary()) {
+        <span class="bin-col">Binary</span>
+      }
+    </div>
+    @for (entry of entries(); track entry.address) {
+      <div class="stack-row" data-testid="asm-stack-row" [class.current-sp]="entry.isSp" [class.changed]="entry.changed">
+        <span class="addr-col">{{ entry.address }}h</span>
+        @if (showHex()) {
+          <span class="val-col">{{ entry.value }}h</span>
+        }
+        @if (showBinary()) {
+          <span class="bin-col">{{ entry.valueBin }}</span>
+        }
+      </div>
+    }
+  }
+</div>

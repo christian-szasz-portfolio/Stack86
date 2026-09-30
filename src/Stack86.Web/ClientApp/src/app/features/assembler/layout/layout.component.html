@@ -1,0 +1,43 @@
+<emu-toolbar [(showDataFlow)]="showDataFlow" [compact]="compactToolbar()" />
+
+@if (sourceTitle; as title) {
+  <div class="source-title">{{ title }}</div>
+}
+
+<as-split direction="horizontal" class="main-area" unit="pixel" [gutterSize]="3" [disabled]="splittersDisabled()">
+  <as-split-area [size]="'*'">
+    <as-split direction="vertical" [gutterSize]="3" [disabled]="splittersDisabled()">
+      <as-split-area [size]="75">
+        <as-split direction="horizontal" [gutterSize]="3" [disabled]="splittersDisabled()">
+          <as-split-area [size]="showDataFlow() ? 50 : 100">
+            <emu-editor />
+          </as-split-area>
+          @if (showDataFlow()) {
+            <as-split-area [size]="50" [minSize]="20">
+              <emu-data-flow-panel />
+            </as-split-area>
+          }
+        </as-split>
+      </as-split-area>
+      <as-split-area [size]="25" [minSize]="10">
+        <emu-console />
+      </as-split-area>
+    </as-split>
+  </as-split-area>
+  <as-split-area [size]="debugPanelWidth()" [minSize]="320" [maxSize]="575">
+    <div class="debug-column">
+      <div class="registers-flags">
+        <emu-registers />
+        <emu-flags />
+      </div>
+      <as-split direction="vertical" class="debug-split" [gutterSize]="3" [disabled]="splittersDisabled()">
+        <as-split-area [size]="75">
+          <emu-memory-view />
+        </as-split-area>
+        <as-split-area [size]="50">
+          <emu-stack-view />
+        </as-split-area>
+      </as-split>
+    </div>
+  </as-split-area>
+</as-split>

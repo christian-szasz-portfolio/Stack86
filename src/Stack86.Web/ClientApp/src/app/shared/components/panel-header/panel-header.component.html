@@ -1,0 +1,9 @@
+<div class="panel-header">
+  @if (icon(); as iconName) {
+    <fa-icon [icon]="iconName" class="panel-header__icon" />
+  }
+  {{ title() }}
+  <div class="panel-header__actions">
+    <ng-content />
+  </div>
+</div>

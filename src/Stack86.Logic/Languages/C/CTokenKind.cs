@@ -1,0 +1,85 @@
+namespace Stack86.Logic.Languages.C;
+
+/// <summary>
+/// Token types produced by the C lexer.
+/// </summary>
+public enum CTokenKind
+{
+    IntegerLiteral,
+    CharLiteral,
+    StringLiteral,
+
+    Identifier,
+    IntKeyword,
+    CharKeyword,
+    VoidKeyword,
+    ReturnKeyword,
+    IfKeyword,
+    ElseKeyword,
+    WhileKeyword,
+    ForKeyword,
+    BreakKeyword,
+    ContinueKeyword,
+    StructKeyword,
+    EnumKeyword,
+    UnionKeyword,
+    TypedefKeyword,
+    DoKeyword,
+    SwitchKeyword,
+    CaseKeyword,
+    DefaultKeyword,
+    SizeofKeyword,
+
+    LeftParen,
+    RightParen,
+    LeftBrace,
+    RightBrace,
+    LeftBracket,
+    RightBracket,
+    Semicolon,
+    Comma,
+    Dot,
+    Arrow,
+    Asterisk,
+    Ampersand,
+    Colon,
+    Question,
+
+    Plus,
+    Minus,
+    Slash,
+    Percent,
+    Pipe,
+    Caret,
+    Tilde,
+    Exclamation,
+    ShiftLeft,
+    ShiftRight,
+
+    PlusPlus,
+    MinusMinus,
+    PlusEqual,
+    MinusEqual,
+    StarEqual,
+    SlashEqual,
+    PercentEqual,
+    AmpEqual,
+    PipeEqual,
+    CaretEqual,
+    ShiftLeftEqual,
+    ShiftRightEqual,
+
+    Equal,
+    NotEqual,
+    Less,
+    LessEqual,
+    Greater,
+    GreaterEqual,
+
+    LogicalAnd,
+    LogicalOr,
+
+    Assign,
+
+    EndOfFile,
+}

@@ -1,0 +1,15 @@
+<emu-panel-header title="Registers" icon="microchip">
+  <emu-settings-dropdown [options]="settingsOptions()" (optionToggled)="onSettingToggled($event)" />
+</emu-panel-header>
+<div class="registers-grid" [style.grid-template-columns]="gridColumns()" data-testid="asm-registers">
+  @for (entry of entries(); track entry.name) {
+    <span class="reg-name" [attr.data-testid]="'asm-register-' + entry.name">{{ entry.name }}</span>
+    @if (showHex()) {
+      <span class="reg-hex" [attr.data-testid]="'asm-register-' + entry.name + '-hex'" [class.changed]="entry.changed">{{ entry.hex }}</span>
+    }
+    <span class="reg-dec" [attr.data-testid]="'asm-register-' + entry.name + '-dec'" [class.changed]="entry.changed">{{ entry.dec }}</span>
+    @if (showBinary()) {
+      <span class="reg-bin" [attr.data-testid]="'asm-register-' + entry.name + '-bin'" [class.changed]="entry.changed">{{ entry.bin }}</span>
+    }
+  }
+</div>

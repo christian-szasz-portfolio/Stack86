@@ -1,0 +1,19 @@
+{
+  "name": "stack86-root",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Stack86 — 8086 compiler & emulator",
+  "scripts": {
+    "dev": "npm run dev --prefix src/Stack86.Web/ClientApp",
+    "dev:build": "npm run dev:build --prefix src/Stack86.Web/ClientApp",
+    "dev:watch": "npm run dev:watch --prefix src/Stack86.Web/ClientApp",
+    "build": "npm run build --prefix src/Stack86.Web/ClientApp",
+    "preview": "npm run preview --prefix src/Stack86.Web/ClientApp",
+    "lint": "npm run lint --prefix src/Stack86.Web/ClientApp",
+    "lint:fix": "npm run lint:fix --prefix src/Stack86.Web/ClientApp",
+    "test": "npm test --prefix src/Stack86.Web/ClientApp",
+    "test:watch": "npm run test:watch --prefix src/Stack86.Web/ClientApp",
+    "install:client": "npm install --prefix src/Stack86.Web/ClientApp",
+    "clean:windows": "Get-ChildItem -Path src -Include bin,obj,node_modules -Recurse -Directory | Remove-Item -Recurse -Force"
+  }
+}

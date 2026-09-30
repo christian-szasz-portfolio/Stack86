@@ -1,0 +1,28 @@
+@use '../../styles/panel' as *;
+@use '../../styles/variables' as *;
+@use '../../styles/animations' as *;
+
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  @include animate-fadeIn;
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $space-10;
+}
+
+.empty-state__icon {
+  font-size: 24px;
+  color: var(--text-secondary);
+  opacity: 0.5;
+}
+
+.empty-state__message {
+  @include placeholder;
+}

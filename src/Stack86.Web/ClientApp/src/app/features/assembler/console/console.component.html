@@ -1,0 +1,32 @@
+<emu-console-tab-bar [(activeTab)]="activeTab" [badges]="badges()" />
+<div class="console-content" #scrollContainer data-testid="asm-console-list">
+  @switch (activeTab()) {
+    @case (ConsoleTab.Output) {
+      @if (outputLines().length === 0) {
+        <emu-empty-state message="Program output will appear here" icon="terminal" />
+      } @else {
+        @for (line of outputLines(); track $index) {
+          <span class="output-line" data-testid="asm-console-output-line">{{ line }}</span>
+        }
+      }
+    }
+    @case (ConsoleTab.Problems) {
+      @if (problemLines().length === 0) {
+        <emu-empty-state message="No errors or warnings" icon="check" />
+      } @else {
+        @for (line of problemLines(); track $index) {
+          <span class="output-line" data-testid="asm-console-problem-line" [class.warn-line]="line.startsWith('[Warn]')" [class.error-line]="line.startsWith('[Error]')">{{ line }}</span>
+        }
+      }
+    }
+    @case (ConsoleTab.BuildLog) {
+      @if (buildLogLines().length === 0) {
+        <emu-empty-state message="Build log will appear here" icon="file-lines" />
+      } @else {
+        @for (line of buildLogLines(); track $index) {
+          <span class="output-line info-line" data-testid="asm-console-buildlog-line">{{ line }}</span>
+        }
+      }
+    }
+  }
+</div>

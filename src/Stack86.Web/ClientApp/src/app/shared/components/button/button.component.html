@@ -1,0 +1,21 @@
+<button
+  [class]="variant()"
+  [class.active]="active()"
+  [class.compact]="compact()"
+  [disabled]="disabled() || loading()"
+  [title]="compact() ? '' : buttonTitle()"
+  (click)="onButtonClick()"
+>
+  @if (loading()) {
+    <fa-icon icon="spinner" animation="spin" />
+  } @else if (icon(); as iconName) {
+    <fa-icon [icon]="iconName" />
+  }
+  <span class="btn-label"><ng-content /></span>
+  @if (buttonTitle(); as title) {
+    <span class="tooltip" [class.tooltip--start]="tooltipPosition() === TooltipPosition.Start" [class.tooltip--end]="tooltipPosition() === TooltipPosition.End">
+      {{ title }}
+      <span class="tooltip-arrow"></span>
+    </span>
+  }
+</button>

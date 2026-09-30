@@ -1,0 +1,59 @@
+@use '../../../../shared/styles/panel' as *;
+@use '../../../../shared/styles/typography' as *;
+@use '../../../../shared/styles/variables' as *;
+@use '../../../../shared/styles/animations' as *;
+
+:host {
+  @include panel-host;
+  @include animate-fadeIn;
+}
+
+.registers-grid {
+  display: grid;
+  gap: $space-2 $space-12;
+  padding: $space-8 $space-12;
+  @include mono-data;
+  overflow-y: auto;
+}
+
+.reg-name {
+  color: var(--warning);
+  font-weight: 600;
+  padding: 1px $space-4;
+  border-radius: $radius-sm;
+}
+
+.reg-hex {
+  color: var(--text-primary);
+  padding: 1px $space-4;
+
+  &.changed {
+    color: var(--register-changed-fg);
+    background-color: var(--register-changed-bg);
+    border-radius: $radius-sm;
+    font-weight: 600;
+    animation: highlightFlash 0.8s ease;
+  }
+}
+
+.reg-dec {
+  color: var(--text-secondary);
+  padding: 1px $space-4;
+
+  &.changed {
+    color: var(--register-changed-fg);
+    animation: highlightFlash 0.8s ease;
+  }
+}
+
+.reg-bin {
+  color: var(--text-secondary);
+  padding: 1px $space-4;
+  font-size: 10px;
+  letter-spacing: 0.5px;
+
+  &.changed {
+    color: var(--register-changed-fg);
+    animation: highlightFlash 0.8s ease;
+  }
+}

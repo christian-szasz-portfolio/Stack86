@@ -1,0 +1,39 @@
+@use '../../../shared/styles/variables' as *;
+
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: var(--bg-secondary);
+}
+
+.editor-container {
+  flex: 1;
+  overflow: hidden;
+}
+
+.new-file-input {
+  display: flex;
+  align-items: center;
+  height: 28px;
+  padding: 0 $space-8;
+  background-color: var(--bg-tertiary);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.new-file-input__field {
+  width: 160px;
+  height: 20px;
+  padding: 0 $space-6;
+  background-color: var(--bg-primary);
+  border: 1px solid var(--accent);
+  border-radius: $radius-sm;
+  color: var(--text-primary);
+  font-family: var(--font-ui);
+  font-size: 12px;
+  outline: none;
+}
+
+.hidden-file-input {
+  display: none;
+}

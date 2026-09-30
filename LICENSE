@@ -1,0 +1,17 @@
+Copyright (c) 2026 Christian-Ioan Szasz. All rights reserved.
+
+This repository is published so that its source code can be read and reviewed as part of a
+portfolio. No licence is granted to copy, modify, merge, publish, distribute, sublicense or sell
+the code or any part of it, or to use it in another work, without the prior written permission of
+the copyright holder.
+
+As the one exception, permission is granted to clone, build and run the code on your own machine,
+solely to evaluate it as part of the copyright holder's portfolio. This permission does not extend
+to deploying the code for others, redistributing it, or using any part of it in another work.
+
+Viewing and forking the repository on GitHub remain available as the GitHub Terms of Service
+provide.
+
+The code depends on private packages from the copyright holder's own Common library. They are
+not part of this repository, and no licence to them is granted. Third-party packages the code
+depends on are under their own licences.

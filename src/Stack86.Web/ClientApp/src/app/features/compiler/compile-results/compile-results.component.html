@@ -1,0 +1,17 @@
+<emu-panel-header title="Generated Assembly" icon="microchip" />
+<div class="editor-wrapper" data-testid="compile-asm-output">
+  <div #editorContainer class="editor-container" [hidden]="showEmptyState()"></div>
+  @if (showEmptyState()) {
+    <div class="empty-state-center">
+      <emu-empty-state
+        icon="microchip"
+        message="No assembly generated yet. Compile your program to see the 8086 output here."
+      />
+    </div>
+  }
+  @if (loading()) {
+    <div class="editor-overlay">
+      <fa-icon icon="spinner" animation="spin" size="2x" />
+    </div>
+  }
+</div>

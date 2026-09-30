@@ -1,0 +1,16 @@
+{
+  "settings": {
+    "documentationRules": {
+      "companyName": "Stack86",
+      "documentInterfaces": false,
+      "documentExposedElements": false,
+      "documentInternalElements": false,
+      "documentPrivateElements": false,
+      "documentPrivateFields": false
+    },
+    "orderingRules": {
+      "systemUsingDirectivesFirst": true,
+      "blankLinesBetweenUsingGroups": "allow"
+    }
+  }
+}

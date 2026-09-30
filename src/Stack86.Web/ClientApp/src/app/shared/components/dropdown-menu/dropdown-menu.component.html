@@ -1,0 +1,43 @@
+<div class="dropdown">
+  <button
+    type="button"
+    class="dropdown__trigger"
+    [class.dropdown__trigger--open]="isOpen()"
+    [attr.aria-expanded]="isOpen()"
+    aria-haspopup="menu"
+    (click)="toggle()"
+  >
+    @if (displayImage(); as img) {
+      <img [src]="img" class="dropdown__trigger-image" alt="" />
+    } @else if (displayIcon(); as iconRef) {
+      <fa-icon [icon]="iconRef" />
+    }
+    <span>{{ displayLabel() }}</span>
+    <fa-icon icon="chevron-down" class="dropdown__chevron" />
+  </button>
+  @if (isOpen()) {
+    <div class="dropdown__panel" role="menu">
+      @for (item of items(); track item.value) {
+        <button
+          type="button"
+          role="menuitem"
+          class="dropdown__item"
+          [class.dropdown__item--disabled]="item.disabled"
+          [disabled]="item.disabled ?? false"
+          (click)="onItemClick(item)"
+        >
+          @if (item.image) {
+            <span class="dropdown__icon">
+              <img [src]="item.image" class="dropdown__image" alt="" />
+            </span>
+          } @else if (item.icon) {
+            <span class="dropdown__icon">
+              <fa-icon [icon]="item.icon" />
+            </span>
+          }
+          <span class="dropdown__label">{{ item.label }}</span>
+        </button>
+      }
+    </div>
+  }
+</div>

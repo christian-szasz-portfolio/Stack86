@@ -1,0 +1,105 @@
+@use '../../../../shared/styles/variables' as *;
+
+.menu-bar {
+  display: flex;
+  align-items: stretch;
+  height: 28px;
+  background-color: var(--bg-tertiary);
+  border-bottom: 1px solid var(--border-color);
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.menu-bar__item {
+  position: relative;
+}
+
+.menu-bar__trigger {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 $space-10;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  font-family: var(--font-ui);
+  font-size: 12px;
+  cursor: pointer;
+  transition: background-color $transition-fast, color $transition-fast;
+
+  &:hover,
+  &--open {
+    background-color: rgba(255, 255, 255, 0.06);
+    color: var(--text-primary);
+  }
+}
+
+.menu-bar__dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: $z-overlay;
+  min-width: 220px;
+  padding: $space-4 0;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 0 0 $radius-sm $radius-sm;
+  box-shadow: $shadow-md;
+}
+
+.menu-bar__separator {
+  height: 1px;
+  margin: $space-4 $space-8;
+  background-color: var(--border-color);
+}
+
+.menu-bar__menu-item {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: $space-4 $space-12;
+  border: none;
+  background: transparent;
+  color: var(--text-primary);
+  font-family: var(--font-ui);
+  font-size: 12px;
+  cursor: pointer;
+  transition: background-color $transition-fast;
+  text-align: left;
+
+  &:hover:not(:disabled) {
+    background-color: var(--accent);
+    color: var(--text-highlight);
+  }
+
+  &--disabled,
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+}
+
+.menu-bar__menu-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  margin-right: $space-8;
+  font-size: 11px;
+  opacity: 0.7;
+}
+
+.menu-bar__menu-label {
+  flex: 1;
+}
+
+.menu-bar__menu-shortcut {
+  margin-left: $space-16;
+  font-size: 11px;
+  color: var(--text-secondary);
+  opacity: 0.7;
+
+  .menu-bar__menu-item:hover & {
+    color: var(--text-highlight);
+  }
+}

@@ -1,0 +1,22 @@
+<div class="tab-bar">
+  <div class="tab-bar__tabs">
+    @for (file of files(); track file.id) {
+      <button
+        class="tab"
+        [class.tab--active]="file.id === activeFileId()"
+        (click)="onTabClick(file.id)"
+      >
+        <fa-icon [icon]="getFileIcon(file.name)" class="tab__icon" />
+        <span class="tab__name">{{ file.name }}</span>
+        @if (!file.isMain && files().length > 1) {
+          <span class="tab__close" role="button" tabindex="0" (click)="onCloseClick($event, file.id)" (keydown.enter)="onCloseClick($event, file.id)">
+            <fa-icon icon="xmark" />
+          </span>
+        }
+      </button>
+    }
+  </div>
+  <button class="tab-bar__add" (click)="onAddClick()" title="New File">
+    <fa-icon icon="plus" />
+  </button>
+</div>

@@ -1,0 +1,31 @@
+<div class="file-menu" data-testid="asm-file-menu-root">
+  <button class="file-menu__trigger" data-testid="asm-file-menu-trigger" [class.file-menu__trigger--open]="isOpen()" (click)="toggle()">
+    <fa-icon icon="file" />
+    <span>File</span>
+    <fa-icon icon="chevron-down" class="file-menu__chevron" />
+  </button>
+  @if (isOpen()) {
+    <div class="file-menu__dropdown" data-testid="asm-file-menu-dropdown">
+      @for (item of items; track item.action) {
+        @if (item.separator) {
+          <div class="file-menu__separator"></div>
+        } @else {
+          <button
+            class="file-menu__item"
+            [attr.data-testid]="'asm-file-menu-item-' + item.action"
+            [class.file-menu__item--disabled]="isItemDisabled(item)"
+            [disabled]="isItemDisabled(item)"
+            (click)="onItemClick(item)"
+          >
+            <span class="file-menu__icon">
+              @if (item.icon) {
+                <fa-icon [icon]="item.icon" />
+              }
+            </span>
+            <span class="file-menu__label">{{ item.label }}</span>
+          </button>
+        }
+      }
+    </div>
+  }
+</div>

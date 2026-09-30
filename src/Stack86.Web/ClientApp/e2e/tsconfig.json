@@ -1,0 +1,15 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "rootDir": ".",
+    "outDir": "./dist",
+    "types": ["@playwright/test", "node"],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "noPropertyAccessFromIndexSignature": false,
+    "isolatedModules": false,
+    "lib": ["ES2022", "dom"]
+  },
+  "include": ["**/*.ts"],
+  "exclude": ["dist", "node_modules"]
+}

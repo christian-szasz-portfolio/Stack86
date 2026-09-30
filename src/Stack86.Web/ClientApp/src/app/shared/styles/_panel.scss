@@ -1,0 +1,24 @@
+// Shared panel host styling — use @include panel-host() in any :host block
+@mixin panel-host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: var(--bg-secondary);
+}
+
+// Scrollable content area inside a panel
+@mixin panel-content {
+  flex: 1;
+  padding: 8px 12px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--text-primary);
+  overflow: auto;
+}
+
+// Placeholder text shown when panel has no data
+@mixin placeholder {
+  color: var(--text-secondary);
+  font-style: italic;
+}

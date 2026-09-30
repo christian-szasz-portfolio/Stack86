@@ -1,0 +1,22 @@
+:host {
+  display: contents;
+}
+
+.trace {
+  margin-top: 12px;
+  font-size: 12px;
+  opacity: 0.75;
+}
+
+button {
+  background: var(--accent, #0e639c);
+  color: #fff;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 3px;
+  cursor: pointer;
+
+  &:hover {
+    background: var(--accent-hover, #1177bb);
+  }
+}

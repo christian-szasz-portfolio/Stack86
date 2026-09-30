@@ -1,0 +1,11 @@
+@if (error()) {
+  <emu-modal-shell title="Something went wrong" (dismiss)="onDismiss()">
+    <p>{{ error()!.detail }}</p>
+    @if (error()!.traceId) {
+      <p class="trace">Trace ID: <code>{{ error()!.traceId }}</code></p>
+    }
+    <ng-container modalFooter>
+      <button type="button" (click)="onDismiss()">Dismiss</button>
+    </ng-container>
+  </emu-modal-shell>
+}

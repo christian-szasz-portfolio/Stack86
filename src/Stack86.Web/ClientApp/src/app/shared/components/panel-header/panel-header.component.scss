@@ -1,0 +1,29 @@
+@use '../../styles/typography' as *;
+@use '../../styles/variables' as *;
+
+.panel-header {
+  display: flex;
+  align-items: center;
+  gap: $space-6;
+  padding: $space-4 $space-10;
+  height: $panel-header-height;
+  @include ui-label;
+  background-color: var(--bg-tertiary);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.panel-header__icon {
+  font-size: 10px;
+  opacity: 0.7;
+}
+
+.panel-header__actions {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: $space-4;
+
+  &:empty {
+    display: none;
+  }
+}

@@ -1,0 +1,67 @@
+@use '../../styles/variables' as *;
+@use '../../styles/animations' as *;
+
+:host {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.settings-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  border: none;
+  background: none;
+  border-radius: $radius-sm;
+  cursor: pointer;
+  color: var(--text-secondary);
+  font-size: 10px;
+  transition: color $transition-normal, background-color $transition-normal;
+
+  &:hover {
+    color: var(--text-primary);
+    background-color: var(--bg-input);
+  }
+}
+
+.settings-panel {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  z-index: $z-overlay;
+  min-width: 120px;
+  padding: $space-4;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: $radius-md;
+  box-shadow: $shadow-md;
+  @include animate-fadeIn($transition-fast);
+
+  &__option {
+    display: flex;
+    align-items: center;
+    gap: $space-6;
+    padding: $space-4 $space-6;
+    border-radius: $radius-sm;
+    font-family: var(--font-ui);
+    font-size: 11px;
+    color: var(--text-primary);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background-color $transition-normal;
+
+    &:hover {
+      background-color: var(--bg-input);
+    }
+
+    input[type='checkbox'] {
+      accent-color: var(--accent);
+      cursor: pointer;
+      margin: 0;
+    }
+  }
+}

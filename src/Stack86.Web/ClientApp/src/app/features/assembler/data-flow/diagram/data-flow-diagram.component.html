@@ -1,0 +1,18 @@
+<canvas
+  #diagramCanvas
+  (mousemove)="onMouseMove($event)"
+  (mouseenter)="onMouseEnter()"
+  (mouseleave)="onMouseLeave()"
+  (mousedown)="onMouseDown($event)"
+  (wheel)="onWheel($event)"
+></canvas>
+@if (tooltip(); as tip) {
+  <div
+    class="tooltip"
+    [style.left.px]="tooltipX()"
+    [style.top.px]="tooltipY()"
+  >
+    <div class="tooltip__label">{{ tip.label }}</div>
+    <div class="tooltip__desc">{{ tip.description }}</div>
+  </div>
+}

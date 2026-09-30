@@ -1,0 +1,25 @@
+<emu-panel-header title="Data Flow" icon="diagram-project">
+  <button
+    type="button"
+    class="zoom-btn"
+    (click)="diagram.zoomOut()"
+    [disabled]="!diagram.canZoomOut()"
+    title="Zoom out (Ctrl -)"
+    aria-label="Zoom out"
+  >
+    <fa-icon icon="magnifying-glass-minus" />
+  </button>
+  <button
+    type="button"
+    class="zoom-btn"
+    (click)="diagram.zoomIn()"
+    [disabled]="!diagram.canZoomIn()"
+    title="Zoom in (Ctrl +)"
+    aria-label="Zoom in"
+  >
+    <fa-icon icon="magnifying-glass-plus" />
+  </button>
+</emu-panel-header>
+<div class="diagram-container">
+  <emu-data-flow-diagram #diagram />
+</div>

@@ -1,0 +1,27 @@
+# A live portfolio demo, meant to be found, by people and by AI agents alike.
+
+# AI crawlers and assistants, named so the allowance is on record. They are
+# already covered by the wildcard below; this states it for the ones that look
+# for their own name.
+User-agent: GPTBot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: ClaudeBot
+User-agent: Claude-User
+User-agent: Claude-SearchBot
+User-agent: anthropic-ai
+User-agent: Google-Extended
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Applebot-Extended
+User-agent: Amazonbot
+User-agent: Bytespider
+User-agent: Meta-ExternalAgent
+User-agent: cohere-ai
+User-agent: CCBot
+User-agent: DuckAssistBot
+Allow: /
+
+# Everyone else.
+User-agent: *
+Allow: /

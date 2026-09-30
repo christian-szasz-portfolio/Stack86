@@ -1,0 +1,39 @@
+<div class="menu-bar">
+  @for (menu of menus(); track menu.label; let i = $index) {
+    <div class="menu-bar__item" (mouseenter)="onMenuHover(i)">
+      <button
+        class="menu-bar__trigger"
+        [class.menu-bar__trigger--open]="openMenuIndex() === i"
+        (click)="toggleMenu(i)"
+      >
+        {{ menu.label }}
+      </button>
+      @if (openMenuIndex() === i) {
+        <div class="menu-bar__dropdown">
+          @for (item of menu.items; track $index) {
+            @if (item.separator) {
+              <div class="menu-bar__separator"></div>
+            } @else {
+              <button
+                class="menu-bar__menu-item"
+                [class.menu-bar__menu-item--disabled]="item.disabled"
+                [disabled]="item.disabled"
+                (click)="onItemClick(item)"
+              >
+                <span class="menu-bar__menu-icon">
+                  @if (item.icon) {
+                    <fa-icon [icon]="item.icon" />
+                  }
+                </span>
+                <span class="menu-bar__menu-label">{{ item.label }}</span>
+                @if (item.shortcut) {
+                  <span class="menu-bar__menu-shortcut">{{ item.shortcut }}</span>
+                }
+              </button>
+            }
+          }
+        </div>
+      }
+    </div>
+  }
+</div>

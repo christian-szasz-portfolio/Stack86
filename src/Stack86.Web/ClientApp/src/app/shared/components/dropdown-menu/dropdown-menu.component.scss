@@ -1,0 +1,107 @@
+@use '../../styles/variables' as *;
+@use '../../styles/animations' as *;
+
+.dropdown {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.dropdown__trigger {
+  display: flex;
+  align-items: center;
+  gap: $space-4;
+  height: 26px;
+  padding: 0 $space-8;
+  border: 1px solid var(--border-color);
+  border-radius: $radius-sm;
+  background: var(--bg-input);
+  color: var(--text-secondary);
+  font-family: var(--font-ui);
+  font-size: 11px;
+  cursor: pointer;
+  transition: color $transition-normal, background-color $transition-normal, border-color $transition-normal;
+  white-space: nowrap;
+
+  &:hover,
+  &--open {
+    color: var(--text-primary);
+    background-color: var(--bg-secondary);
+    border-color: var(--accent);
+  }
+}
+
+.dropdown__chevron {
+  font-size: 9px;
+  opacity: 0.6;
+}
+
+.dropdown__panel {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: $z-overlay;
+  min-width: 180px;
+  max-height: 320px;
+  margin-top: 2px;
+  padding: $space-4 0;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: $radius-sm;
+  box-shadow: $shadow-md;
+  overflow-y: auto;
+  @include animate-fadeIn($transition-fast);
+}
+
+.dropdown__item {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: $space-4 $space-12;
+  border: none;
+  background: transparent;
+  color: var(--text-primary);
+  font-family: var(--font-ui);
+  font-size: 12px;
+  cursor: pointer;
+  transition: background-color $transition-fast;
+  text-align: left;
+
+  &:hover:not(:disabled) {
+    background-color: var(--accent);
+    color: var(--text-highlight);
+  }
+
+  &--disabled,
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+}
+
+.dropdown__trigger-image {
+  width: 16px;
+  height: 16px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.dropdown__image {
+  width: 16px;
+  height: 16px;
+  border-radius: 2px;
+}
+
+.dropdown__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  margin-right: $space-6;
+  font-size: 11px;
+  opacity: 0.7;
+}
+
+.dropdown__label {
+  flex: 1;
+}

@@ -1,0 +1,9 @@
+<emu-panel-header title="Flags" icon="flag" />
+<div class="flags-row" data-testid="asm-flags">
+  @for (flag of flagEntries(); track flag.name) {
+    <div class="flag" [attr.data-testid]="'asm-flag-' + flag.name" [attr.data-set]="flag.set">
+      <span class="flag-indicator" [class.set]="flag.set"></span>
+      <span class="flag-name">{{ flag.name }}</span>
+    </div>
+  }
+</div>

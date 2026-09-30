@@ -1,0 +1,71 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <SpaRoot>ClientApp\</SpaRoot>
+    <EnableDefaultContentItems>false</EnableDefaultContentItems>
+    <!-- Where a local secret lives in Development: `dotnet user-secrets`, outside the repository. -->
+    <UserSecretsId>3aa4c2d3-1b85-4140-b4f4-511f673c5fda</UserSecretsId>
+  </PropertyGroup>
+
+  <!-- Exclude SPA source files from .NET compilation -->
+  <ItemGroup>
+    <Compile Remove="$(SpaRoot)**" />
+    <Content Remove="$(SpaRoot)**" />
+    <TypeScriptCompile Remove="$(SpaRoot)**" />
+    <None Remove="$(SpaRoot)**" />
+    <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**;$(SpaRoot)dist\**" />
+  </ItemGroup>
+
+  <!-- wwwroot contains the compiled Angular output -->
+  <ItemGroup>
+    <Content Include="wwwroot\**\*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="appsettings.Testing.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Stack86.Api\Stack86.Api.csproj" />
+  </ItemGroup>
+  <!-- TypeScript transpiler script (from Stack86.Logic) -->
+  <ItemGroup>
+    <None Include="..\Stack86.Logic\Languages\TypeScript\transpile.cjs" Link="transpile.cjs" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Common.Diagnostics" Version="0.4.0" />
+    <PackageReference Include="Common.Diagnostics.Azure" Version="0.1.2" />
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.5" />
+    <!-- Direct pin only to lift the transitive Microsoft.OpenApi off 2.0.0, which carries the
+         high-severity advisory NU1903 / GHSA-v5pm-xwqc-g5wc. Nothing here references it directly;
+         it arrives via Microsoft.AspNetCore.OpenApi and Scalar.AspNetCore. -->
+    <PackageReference Include="Microsoft.OpenApi" Version="2.12.0" />
+    <PackageReference Include="Scalar.AspNetCore" Version="2.13.13" />
+    <PackageReference Include="Serilog.AspNetCore" Version="10.0.0" />
+  </ItemGroup>
+
+  <!-- Windows only: cmd syntax, and the sentinels are for the local run-app script. -->
+  <Target Name="NotifyBuildStarting" BeforeTargets="PrepareForBuild;BeforeClean" Condition="$([MSBuild]::IsOSPlatform('Windows'))">
+    <MakeDir Directories="$(OutDir)" />
+    <Message Importance="high" Text="Writing $(OutDir)build_starting.txt" />
+    <Exec Command="echo Build starting on %DATE% at %TIME% &gt; &quot;$(OutDir)build_starting.txt&quot;" />
+    <!-- Pause so the run-app script can detect the sentinel and kill the running process before DLLs are copied -->
+    <Exec Command="ping -n 5 127.0.0.1 &gt; NUL" />
+  </Target>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent" Condition="$([MSBuild]::IsOSPlatform('Windows'))">
+    <Message Importance="high" Text="Writing $(OutDir)build_completed.txt" />
+    <Exec Command="echo Build completed on %DATE% at %TIME% &gt; &quot;$(OutDir)build_completed.txt&quot;" />
+  </Target>
+
+</Project>

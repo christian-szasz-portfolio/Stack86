@@ -1,0 +1,15 @@
+@use '../../../shared/styles/layout' as *;
+@use '../../../shared/styles/variables' as *;
+
+.compile-toolbar {
+  @include toolbar-host;
+  justify-content: space-between;
+  overflow: visible;
+}
+
+.compile-toolbar__left,
+.compile-toolbar__right {
+  display: flex;
+  align-items: center;
+  gap: $space-8;
+}

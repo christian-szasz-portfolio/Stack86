@@ -1,0 +1,88 @@
+@use '../../../../shared/styles/layout' as *;
+@use '../../../../shared/styles/inputs' as *;
+@use '../../../../shared/styles/variables' as *;
+
+:host {
+  @include toolbar-host;
+  overflow: visible;
+
+  &.compact {
+    .speed-control__label {
+      display: none;
+    }
+
+    .speed-control__slider {
+      width: 60px;
+    }
+  }
+}
+
+.separator {
+  @include toolbar-separator;
+}
+
+.spacer {
+  @include toolbar-spacer;
+}
+
+.speed-control {
+  display: flex;
+  align-items: center;
+  gap: $space-6;
+
+  &__label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-secondary);
+    min-width: 72px;
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  &__slider {
+    width: 100px;
+    height: 4px;
+    appearance: none;
+    background: var(--border-color);
+    border-radius: $radius-sm;
+    outline: none;
+    cursor: pointer;
+
+    &::-webkit-slider-thumb {
+      appearance: none;
+      width: 12px;
+      height: 12px;
+      border-radius: $radius-full;
+      background: var(--accent);
+      cursor: pointer;
+      transition: background-color $transition-normal;
+
+      &:hover {
+        background: var(--accent-hover);
+      }
+    }
+
+    &::-moz-range-thumb {
+      width: 12px;
+      height: 12px;
+      border: none;
+      border-radius: $radius-full;
+      background: var(--accent);
+      cursor: pointer;
+    }
+
+    &::-moz-range-track {
+      background: var(--border-color);
+      border-radius: $radius-sm;
+      height: 4px;
+    }
+  }
+
+  emu-select {
+    ::ng-deep select {
+      padding: $space-2 $space-4;
+      font-size: 11px;
+      min-width: 44px;
+    }
+  }
+}

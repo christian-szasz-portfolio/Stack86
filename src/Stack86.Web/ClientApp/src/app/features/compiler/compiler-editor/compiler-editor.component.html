@@ -1,0 +1,31 @@
+<emu-menu-bar [menus]="menus()" (menuAction)="onMenuAction($event)" />
+<emu-tab-bar
+  [files]="files()"
+  [activeFileId]="activeFileId()"
+  (tabSelected)="onTabSelected($event)"
+  (tabClosed)="onTabClosed($event)"
+  (addFileRequested)="onAddFileRequested()"
+/>
+@if (showNewFileInput()) {
+  <div class="new-file-input">
+    <input
+      #newFileInput
+      class="new-file-input__field"
+      type="text"
+      [value]="newFileName()"
+      placeholder="filename.c"
+      (keydown.enter)="confirmNewFile(newFileInput.value)"
+      (keydown.escape)="cancelNewFile()"
+      (blur)="confirmNewFile(newFileInput.value)"
+    />
+  </div>
+}
+<div #editorContainer class="editor-container"></div>
+<input
+  #fileInput
+  type="file"
+  [attr.accept]="fileInputAccept()"
+  multiple
+  class="hidden-file-input"
+  (change)="onFilesSelected($event)"
+/>

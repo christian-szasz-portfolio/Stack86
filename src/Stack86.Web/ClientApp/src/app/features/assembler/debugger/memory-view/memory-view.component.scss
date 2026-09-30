@@ -1,0 +1,101 @@
+@use '../../../../shared/styles/panel' as *;
+@use '../../../../shared/styles/buttons' as *;
+@use '../../../../shared/styles/inputs' as *;
+@use '../../../../shared/styles/typography' as *;
+@use '../../../../shared/styles/variables' as *;
+@use '../../../../shared/styles/animations' as *;
+
+:host {
+  @include panel-host;
+  @include animate-fadeIn;
+}
+
+.memory-toolbar {
+  display: flex;
+  align-items: center;
+  gap: $space-6;
+  padding: $space-4 $space-8;
+  border-bottom: 1px solid var(--border-color);
+  font-size: 11px;
+
+  p {
+    color: var(--text-secondary);
+  }
+}
+
+.address-input {
+  @include input-base;
+  width: 48px;
+}
+
+.jump-btn {
+  @include button-small;
+}
+
+.memory-content {
+  flex: 1;
+  overflow: auto;
+  padding: 0 $space-8 $space-4 $space-8;
+  @include mono-data(11px);
+}
+
+.memory-header,
+.memory-row {
+  display: flex;
+  gap: $space-4;
+  white-space: nowrap;
+  padding: 1px 0;
+}
+
+.memory-row {
+  border-radius: $radius-sm;
+
+  &:nth-child(even) {
+    background-color: var(--row-alt);
+  }
+
+  &:hover {
+    background-color: var(--row-hover);
+  }
+}
+
+.memory-header {
+  color: var(--text-secondary);
+  font-weight: 600;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: $space-2;
+  margin-bottom: $space-2;
+  position: sticky;
+  top: 0;
+  background-color: var(--bg-secondary);
+  z-index: 1;
+}
+
+.addr-col {
+  width: 40px;
+  color: var(--warning);
+  flex-shrink: 0;
+}
+
+.byte-col {
+  width: 20px;
+  text-align: center;
+  flex-shrink: 0;
+
+  &.nonzero {
+    color: var(--success);
+  }
+
+  &.changed {
+    color: var(--memory-changed-fg);
+    background-color: var(--memory-changed-bg);
+    border-radius: $radius-sm;
+    font-weight: 600;
+    animation: memoryFlash 0.8s ease;
+  }
+}
+
+.ascii-col {
+  margin-left: $space-8;
+  color: var(--text-secondary);
+}

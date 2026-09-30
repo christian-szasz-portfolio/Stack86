@@ -1,0 +1,40 @@
+@use '../../../../shared/styles/panel' as *;
+@use '../../../../shared/styles/typography' as *;
+@use '../../../../shared/styles/variables' as *;
+@use '../../../../shared/styles/animations' as *;
+
+:host {
+  @include panel-host;
+  height: auto;
+}
+
+.flags-row {
+  display: flex;
+  gap: $space-12;
+  padding: $space-8 $space-12;
+  @include mono-data;
+  @include animate-fadeIn;
+}
+
+.flag {
+  display: flex;
+  align-items: center;
+  gap: $space-4;
+}
+
+.flag-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: $radius-full;
+  background-color: var(--bg-input);
+  transition: background-color $transition-normal;
+
+  &.set {
+    background-color: var(--success);
+    box-shadow: 0 0 4px rgba(78, 201, 176, 0.4);
+  }
+}
+
+.flag-name {
+  color: var(--text-secondary);
+}

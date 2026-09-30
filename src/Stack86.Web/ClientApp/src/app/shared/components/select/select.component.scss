@@ -1,0 +1,9 @@
+@use '../../styles/inputs' as *;
+
+:host {
+  display: inline-flex;
+}
+
+select {
+  @include select-base;
+}

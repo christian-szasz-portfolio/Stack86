@@ -1,0 +1,54 @@
+@use '../../../shared/styles/panel' as *;
+@use '../../../shared/styles/typography' as *;
+@use '../../../shared/styles/variables' as *;
+@use '../../../shared/styles/animations' as *;
+
+:host {
+  @include panel-host;
+}
+
+.console-content {
+  @include panel-content;
+  @include code-display;
+  background-color: var(--bg-primary);
+  overflow-y: auto;
+}
+
+.console-status {
+  display: flex;
+  align-items: center;
+  gap: $space-6;
+  color: var(--text-secondary);
+  font-style: italic;
+  padding: $space-4;
+}
+
+.console-line {
+  display: block;
+  padding: $space-2 $space-4;
+  white-space: pre-wrap;
+  word-break: break-word;
+  border-radius: $radius-sm;
+  @include animate-fadeIn;
+
+  &--error {
+    color: var(--error);
+    background-color: rgba(255, 0, 0, 0.05);
+    border-left: 3px solid var(--error);
+    padding-left: $space-6;
+    margin: $space-2 0;
+  }
+
+  &--warning {
+    color: var(--warning);
+    background-color: rgba(255, 165, 0, 0.05);
+    border-left: 3px solid var(--warning);
+    padding-left: $space-6;
+    margin: $space-2 0;
+  }
+
+  &--info {
+    color: var(--text-secondary);
+    margin: $space-2 0;
+  }
+}

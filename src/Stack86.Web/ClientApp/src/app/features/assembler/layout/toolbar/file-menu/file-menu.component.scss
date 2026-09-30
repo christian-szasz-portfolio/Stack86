@@ -1,0 +1,98 @@
+@use '../../../../../shared/styles/variables' as *;
+@use '../../../../../shared/styles/animations' as *;
+
+.file-menu {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.file-menu__trigger {
+  display: flex;
+  align-items: center;
+  gap: $space-4;
+  height: 26px;
+  padding: 0 $space-8;
+  border: 1px solid var(--border-color);
+  border-radius: $radius-sm;
+  background: var(--bg-input);
+  color: var(--text-secondary);
+  font-family: var(--font-ui);
+  font-size: 11px;
+  cursor: pointer;
+  transition: color $transition-normal, background-color $transition-normal, border-color $transition-normal;
+  white-space: nowrap;
+
+  &:hover,
+  &--open {
+    color: var(--text-primary);
+    background-color: var(--bg-secondary);
+    border-color: var(--accent);
+  }
+}
+
+.file-menu__chevron {
+  font-size: 9px;
+  opacity: 0.6;
+}
+
+.file-menu__dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: $z-overlay;
+  min-width: 180px;
+  margin-top: 2px;
+  padding: $space-4 0;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: $radius-sm;
+  box-shadow: $shadow-md;
+  @include animate-fadeIn($transition-fast);
+}
+
+.file-menu__separator {
+  height: 1px;
+  margin: $space-4 $space-8;
+  background-color: var(--border-color);
+}
+
+.file-menu__item {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: $space-4 $space-12;
+  border: none;
+  background: transparent;
+  color: var(--text-primary);
+  font-family: var(--font-ui);
+  font-size: 12px;
+  cursor: pointer;
+  transition: background-color $transition-fast;
+  text-align: left;
+
+  &:hover:not(:disabled) {
+    background-color: var(--accent);
+    color: var(--text-highlight);
+  }
+
+  &--disabled,
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+}
+
+.file-menu__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  margin-right: $space-6;
+  font-size: 11px;
+  opacity: 0.7;
+}
+
+.file-menu__label {
+  flex: 1;
+}

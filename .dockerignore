@@ -1,0 +1,16 @@
+# Everything the build makes for itself, and everything only a developer's machine needs.
+**/bin
+**/obj
+**/node_modules
+**/wwwroot
+**/dist
+**/coverage
+**/monocart-report
+**/playwright-report
+**/test-results
+TestResults
+coverage
+.git
+.github
+.vs
+.claude

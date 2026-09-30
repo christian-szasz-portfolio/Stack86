@@ -1,0 +1,13 @@
+<button type="button" class="settings-trigger" (click)="toggle()" title="Display settings">
+  <fa-icon icon="gear" />
+</button>
+@if (isOpen()) {
+  <div class="settings-panel">
+    @for (option of options(); track option.label; let i = $index) {
+      <label class="settings-panel__option">
+        <input type="checkbox" [checked]="option.checked" (change)="onCheckboxChange(i, $event)" />
+        {{ option.label }}
+      </label>
+    }
+  </div>
+}

@@ -1,0 +1,6 @@
+<div class="empty-state">
+  @if (icon(); as iconName) {
+    <fa-icon [icon]="iconName" class="empty-state__icon" />
+  }
+  <span class="empty-state__message">{{ message() }}</span>
+</div>

@@ -1,0 +1,16 @@
+<emu-compile-toolbar />
+<as-split direction="vertical" class="compiler-split" [gutterSize]="3">
+  <as-split-area [size]="75">
+    <as-split direction="horizontal" [gutterSize]="3">
+      <as-split-area [size]="50">
+        <emu-compiler-editor />
+      </as-split-area>
+      <as-split-area [size]="50">
+        <emu-compile-results />
+      </as-split-area>
+    </as-split>
+  </as-split-area>
+  <as-split-area [size]="25">
+    <emu-compile-console />
+  </as-split-area>
+</as-split>

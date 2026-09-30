@@ -1,0 +1,60 @@
+@use 'variables' as *;
+
+// ── Toolbar container (horizontal bar with items) ──
+@mixin toolbar-host {
+  display: flex;
+  align-items: center;
+  gap: $space-8;
+  padding: $space-4 $space-12;
+  height: $toolbar-height;
+  flex-shrink: 0;
+  overflow: hidden;
+  background-color: var(--bg-tertiary);
+  border-bottom: 1px solid var(--border-color);
+}
+
+// ── Vertical separator between toolbar groups ──
+@mixin toolbar-separator {
+  width: 1px;
+  height: 20px;
+  background-color: var(--border-color);
+  margin: 0 $space-4;
+  flex-shrink: 0;
+}
+
+// ── Spacer pushes items to the right ──
+@mixin toolbar-spacer {
+  flex: 1;
+}
+
+// ── Full-height flex column container ──
+@mixin page-host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+// ── Split area child (prevents overflow) ──
+@mixin split-area {
+  overflow: hidden;
+}
+
+// ── Split gutter styling (requires ::ng-deep on parent) ──
+@mixin split-gutter {
+  .as-split-gutter {
+    background-color: var(--bg-tertiary) !important;
+    transition: background-color $transition-normal;
+
+    &:hover {
+      background-color: var(--bg-input) !important;
+    }
+
+    .as-split-gutter-icon {
+      background-color: var(--border-color) !important;
+      width: 1px !important;
+      height: 1px !important;
+    }
+  }
+}

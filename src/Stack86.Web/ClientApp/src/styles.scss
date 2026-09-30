@@ -1,0 +1,104 @@
+:root {
+  // ── Colors ──
+  --bg-primary: #1e1e1e;
+  --bg-secondary: #252526;
+  --bg-tertiary: #2d2d2d;
+  --bg-input: #3c3c3c;
+  --border-color: #3e3e42;
+  --text-primary: #cccccc;
+  --text-secondary: #969696;
+  --text-highlight: #ffffff;
+  --accent: #007acc;
+  --accent-hover: #1a8ad4;
+  --success: #4ec9b0;
+  --warning: #dcdcaa;
+  --error: #f44747;
+  --register-changed-fg: #4fc3f7;
+  --register-changed-bg: rgba(79, 195, 247, 0.15);
+  --stack-changed-fg: #ce93d8;
+  --stack-changed-bg: rgba(206, 147, 216, 0.15);
+  --memory-changed-fg: #66bb6a;
+  --memory-changed-bg: rgba(102, 187, 106, 0.12);
+  --breakpoint: #e51400;
+  --current-line: rgba(0, 122, 204, 0.15);
+
+  // ── Console log levels ──
+  --log-info: #64b5f6;
+  --log-warn-fg: #ffb74d;
+  --log-warn-bg: rgba(255, 183, 77, 0.08);
+  --log-error-fg: #ef5350;
+  --log-error-bg: rgba(239, 83, 80, 0.1);
+  --log-verbose: #b0bec5;
+
+  // ── Button action colors ──
+  --btn-run: #66bb6a;
+  --btn-run-hover: #81c784;
+  --btn-step: #42a5f5;
+  --btn-step-hover: #64b5f6;
+  --btn-pause: #ffa726;
+  --btn-pause-hover: #ffb74d;
+  --btn-reset: #ef5350;
+  --btn-reset-hover: #e57373;
+
+  // ── Typography ──
+  --font-mono: 'Cascadia Code', 'Fira Code', 'Consolas', 'Courier New', monospace;
+  --font-ui: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  // ── Spacing ──
+  --space-2: 2px;
+  --space-4: 4px;
+  --space-6: 6px;
+  --space-8: 8px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-24: 24px;
+
+  // ── Radius ──
+  --radius-sm: 3px;
+  --radius-md: 6px;
+
+  // ── Shadows ──
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.25);
+  --shadow-panel: 0 1px 4px rgba(0, 0, 0, 0.2);
+
+  // ── Row highlight ──
+  --row-alt: rgba(255, 255, 255, 0.02);
+  --row-hover: rgba(255, 255, 255, 0.04);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  font-family: var(--font-ui);
+  font-size: 13px;
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--bg-input);
+  border-radius: 4px;
+
+  &:hover {
+    background: #555;
+  }
+}

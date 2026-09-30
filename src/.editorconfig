@@ -1,0 +1,38 @@
+root = true
+
+[*.cs]
+dotnet_diagnostic.SA1633.severity = none
+dotnet_diagnostic.SA0001.severity = none
+dotnet_diagnostic.IDE0003.severity = none
+dotnet_diagnostic.CS1591.severity = none
+
+dotnet_diagnostic.IDE0290.severity = error
+dotnet_diagnostic.IDE0270.severity = none
+
+# IDE style diagnostics – promoted to error
+dotnet_diagnostic.IDE0017.severity = error
+dotnet_diagnostic.IDE0028.severity = error
+dotnet_diagnostic.IDE0037.severity = error
+dotnet_diagnostic.IDE0039.severity = error
+dotnet_diagnostic.IDE0042.severity = error
+dotnet_diagnostic.IDE0059.severity = error
+dotnet_diagnostic.IDE0060.severity = error
+dotnet_diagnostic.IDE0130.severity = error
+dotnet_diagnostic.IDE0230.severity = error
+dotnet_diagnostic.IDE0300.severity = error
+dotnet_diagnostic.IDE0301.severity = error
+dotnet_diagnostic.IDE0305.severity = error
+
+# Code analysis diagnostics – promoted to error
+dotnet_diagnostic.ASP0015.severity = error
+dotnet_diagnostic.CA1822.severity = error
+dotnet_diagnostic.CA1826.severity = error
+dotnet_diagnostic.CA1847.severity = error
+dotnet_diagnostic.CA1854.severity = error
+dotnet_diagnostic.CA1859.severity = error
+dotnet_diagnostic.CA1861.severity = error
+dotnet_diagnostic.CA1862.severity = error
+dotnet_diagnostic.CA1866.severity = error
+dotnet_diagnostic.CA1869.severity = error
+dotnet_diagnostic.CA2016.severity = error
+dotnet_diagnostic.CS8618.severity = error

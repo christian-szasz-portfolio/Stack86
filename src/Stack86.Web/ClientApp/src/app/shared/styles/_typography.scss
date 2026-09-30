@@ -1,0 +1,26 @@
+// ── Mono data display (debugger panels, memory, registers) ──
+@mixin mono-data($size: 12px) {
+  font-family: var(--font-mono);
+  font-size: $size;
+  line-height: 1.6;
+  color: var(--text-primary);
+}
+
+// ── UI label (panel headers, section titles) ──
+@mixin ui-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-secondary);
+  user-select: none;
+}
+
+// ── Code display (assembly output, code blocks) ──
+@mixin code-display {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-break: break-word;
+}

@@ -1,0 +1,72 @@
+@use 'variables' as *;
+
+// ── Keyframes ──
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes highlightFlash {
+  0% { background-color: rgba(79, 195, 247, 0.35); }
+  50% { background-color: rgba(79, 195, 247, 0.15); }
+  100% { background-color: transparent; }
+}
+
+@keyframes stackFlash {
+  0% { background-color: rgba(206, 147, 216, 0.4); }
+  50% { background-color: rgba(206, 147, 216, 0.15); }
+  100% { background-color: transparent; }
+}
+
+@keyframes memoryFlash {
+  0% { background-color: rgba(102, 187, 106, 0.35); }
+  50% { background-color: rgba(102, 187, 106, 0.12); }
+  100% { background-color: transparent; }
+}
+
+// ── Mixins ──
+
+@mixin animate-fadeIn($duration: $transition-slow) {
+  animation: fadeIn $duration ease;
+}
+
+@mixin animate-slideInUp($duration: $transition-slow) {
+  animation: slideInUp $duration ease;
+}
+
+@mixin animate-pulse {
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@mixin animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+// Button press feedback
+@mixin press-effect {
+  &:active:not(:disabled) {
+    transform: scale(0.97);
+  }
+}

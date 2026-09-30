@@ -1,0 +1,48 @@
+<div class="compile-toolbar" data-testid="compile-toolbar">
+  <div class="compile-toolbar__left">
+    <div data-testid="compile-language-dropdown">
+      <emu-dropdown-menu
+        label="Language"
+        [items]="languageItems"
+        [value]="selectedLanguage()"
+        (itemSelected)="onLanguageChange($event)"
+      />
+    </div>
+
+    <div data-testid="compile-sample-dropdown">
+      <emu-dropdown-menu
+        label="Load Example"
+        icon="file-lines"
+        [items]="sampleItems()"
+        [value]="selectedSample()"
+        (itemSelected)="loadSample($event)"
+      />
+    </div>
+
+    <div data-testid="compile-btn">
+      <emu-button
+        [variant]="ButtonVariant.Primary"
+        icon="code"
+        [loading]="loading()"
+        [disabled]="loading()"
+        (pressed)="compile()"
+      >
+        {{ loading() ? 'Compiling...' : 'Compile' }}
+      </emu-button>
+    </div>
+  </div>
+
+  <div class="compile-toolbar__right">
+    @if (canLoadIntoAssembler()) {
+      <div data-testid="compile-load-into-asm-btn">
+        <emu-button
+          [variant]="ButtonVariant.Success"
+          icon="upload"
+          (pressed)="loadIntoAssembler()"
+        >
+          Load into Assembler
+        </emu-button>
+      </div>
+    }
+  </div>
+</div>

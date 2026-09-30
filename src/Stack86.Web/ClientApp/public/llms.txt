@@ -1,0 +1,9 @@
+# Stack86 — live demo
+
+> A live demo of Stack86: a browser IDE that compiles nine languages down to 8086 assembly, then runs the result on an emulator you can single-step. Compilation runs on the server, each language checked by its own toolchain; execution runs in your browser, one instruction at a time, with registers, flags, stack and memory on screen. This is a portfolio piece, not a product.
+
+## More
+
+- Case study: https://christianszasz.dev/work/stack86
+- Source: https://github.com/christian-szasz-portfolio/Stack86
+- Author: https://christianszasz.dev

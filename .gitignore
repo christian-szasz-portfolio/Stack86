@@ -1,0 +1,41 @@
+node_modules/
+dist/
+.vite/
+*.local
+*.log
+.env
+.env.*
+!.env.example
+bin/
+obj/
+coverage/
+wwwroot/
+
+# Playwright e2e
+playwright-report/
+test-results/
+e2e/coverage/
+e2e/playwright-report/
+e2e/test-results/
+e2e/dist/
+.playwright/
+
+# IDEs
+.vs/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# .NET
+*.DotSettings.user
+project.assets.json
+TestResults/
+
+# Agent instructions stay local
+CLAUDE.md
+.claude/
+docs/HANDOVER.md
+.github/copilot-instructions.md
+.github/skills/

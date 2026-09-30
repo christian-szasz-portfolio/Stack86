@@ -1,0 +1,53 @@
+<span data-testid="asm-assemble-btn"><emu-button [variant]="ButtonVariant.Primary" icon="code" buttonTitle="Assemble (Ctrl+Enter)" [compact]="compact()" [tooltipPosition]="TooltipPosition.Start" (pressed)="assemble()">Assemble</emu-button></span>
+<span data-testid="asm-run-btn"><emu-button [variant]="ButtonVariant.Run" icon="play" buttonTitle="Run (F5)" [compact]="compact()" [disabled]="!canRun()" (pressed)="run()">Run</emu-button></span>
+<span data-testid="asm-step-btn"><emu-button [variant]="ButtonVariant.Step" icon="forward-step" buttonTitle="Step (F10)" [compact]="compact()" [disabled]="!canStep()" (pressed)="step()">Step</emu-button></span>
+<span data-testid="asm-pause-btn"><emu-button [variant]="ButtonVariant.Pause" icon="pause" buttonTitle="Pause (F6)" [compact]="compact()" [disabled]="!canPause()" (pressed)="pause()">Pause</emu-button></span>
+<span data-testid="asm-reset-btn"><emu-button [variant]="ButtonVariant.Reset" icon="rotate-left" buttonTitle="Reset (Shift+F5)" [compact]="compact()" (pressed)="reset()">Reset</emu-button></span>
+<div class="separator"></div>
+<div class="speed-control" data-testid="asm-speed-control">
+  <span class="speed-control__label">{{ speedLabel() }}</span>
+  <input
+    type="range"
+    class="speed-control__slider"
+    [min]="0"
+    [max]="speedMax()"
+    [step]="speedStep()"
+    [value]="speedValue()"
+    (input)="onSpeedValueChange($event)"
+    data-testid="asm-speed-input"
+  />
+  <span data-testid="asm-speed-unit">
+    <emu-select
+      [options]="unitOptions"
+      [value]="speedUnit()"
+      (valueChange)="onSpeedUnitChange($event)"
+    />
+  </span>
+</div>
+<div class="separator"></div>
+<span data-testid="asm-sample-dropdown">
+  <emu-dropdown-menu
+    label="Load Example"
+    icon="file-lines"
+    [items]="sampleItems"
+    [value]="selectedSample()"
+    (itemSelected)="loadSample($event)"
+  />
+</span>
+<div class="separator"></div>
+<span data-testid="asm-file-menu">
+  <emu-file-menu
+    [exportDisabled]="!canExportCom()"
+    (menuAction)="onFileMenuAction($event)"
+  />
+</span>
+<div class="separator"></div>
+<span data-testid="asm-data-flow-toggle"><emu-button
+  icon="diagram-project"
+  buttonTitle="Toggle Data Flow Diagram"
+  [compact]="compact()"
+  [active]="showDataFlow()"
+  (pressed)="toggleDataFlow()"
+>Data Flow</emu-button></span>
+<div class="spacer"></div>
+<span data-testid="asm-status"><emu-status-badge [status]="status()" /></span>

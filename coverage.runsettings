@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Settings for Microsoft.Testing.Extensions.CodeCoverage (used via MTP `--coverage-settings`).
+  Includes only Stack86 SUT assemblies; excludes test infrastructure, generated code, EF migrations,
+  Program/Startup bootstrap, DI extensions, and pure DTO/Options types.
+-->
+<Configuration>
+  <CodeCoverage>
+    <ModulePaths>
+      <Include>
+        <ModulePath>.*\\Stack86\.Api\.dll$</ModulePath>
+        <ModulePath>.*\\Stack86\.Logic\.dll$</ModulePath>
+        <ModulePath>.*\\Stack86\.Data\.dll$</ModulePath>
+        <ModulePath>.*\\Stack86\.Common\.dll$</ModulePath>
+        <ModulePath>.*\\Stack86\.Web\.dll$</ModulePath>
+      </Include>
+      <Exclude>
+        <ModulePath>.*\\Stack86\.Test\..*\.dll$</ModulePath>
+        <ModulePath>.*Tests?\.dll$</ModulePath>
+      </Exclude>
+    </ModulePaths>
+
+    <Functions>
+      <Exclude>
+        <Function>^System\..*</Function>
+        <Function>^Microsoft\..*</Function>
+      </Exclude>
+    </Functions>
+
+    <Attributes>
+      <Exclude>
+        <Attribute>^System\.Diagnostics\.CodeAnalysis\.ExcludeFromCodeCoverageAttribute$</Attribute>
+        <Attribute>^System\.CodeDom\.Compiler\.GeneratedCodeAttribute$</Attribute>
+        <Attribute>^System\.Runtime\.CompilerServices\.CompilerGeneratedAttribute$</Attribute>
+      </Exclude>
+    </Attributes>
+
+    <Sources>
+      <Exclude>
+        <Source>.*\\Migrations\\.*</Source>
+        <Source>.*\.Designer\.cs$</Source>
+        <Source>.*\\obj\\.*</Source>
+      </Exclude>
+    </Sources>
+
+    <UseVerifiableInstrumentation>False</UseVerifiableInstrumentation>
+    <AllowLowIntegrityProcesses>True</AllowLowIntegrityProcesses>
+    <CollectFromChildProcesses>True</CollectFromChildProcesses>
+    <CollectAspDotNet>True</CollectAspDotNet>
+  </CodeCoverage>
+</Configuration>

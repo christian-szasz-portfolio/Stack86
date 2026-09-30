@@ -1,0 +1,71 @@
+@use '../../../shared/styles/panel' as *;
+@use '../../../shared/styles/typography' as *;
+@use '../../../shared/styles/variables' as *;
+@use '../../../shared/styles/animations' as *;
+
+:host {
+  @include panel-host;
+}
+
+.console-content {
+  @include panel-content;
+  color: var(--success);
+  background-color: var(--bg-primary);
+  overflow-y: auto;
+}
+
+.output-line {
+  display: block;
+  white-space: pre-wrap;
+  word-break: break-word;
+  color: var(--log-verbose);
+  @include animate-fadeIn;
+
+  &::before {
+    content: '>';
+    color: var(--text-secondary);
+    margin-right: $space-6;
+    opacity: 0.5;
+  }
+}
+
+.info-line {
+  color: var(--log-info);
+
+  &::before {
+    content: '\2139';
+    color: var(--log-info);
+    opacity: 0.8;
+  }
+}
+
+.warn-line {
+  color: var(--log-warn-fg);
+  background-color: var(--log-warn-bg);
+  border-left: 3px solid var(--log-warn-fg);
+  padding: $space-2 $space-6;
+  margin: $space-2 0;
+  border-radius: 0 $radius-sm $radius-sm 0;
+
+  &::before {
+    content: '\26A0';
+    color: var(--log-warn-fg);
+    opacity: 1;
+  }
+}
+
+.error-line {
+  display: block;
+  background-color: var(--log-error-bg);
+  color: var(--log-error-fg);
+  border-left: 3px solid var(--log-error-fg);
+  padding: $space-2 $space-6;
+  margin: $space-2 0;
+  border-radius: 0 $radius-sm $radius-sm 0;
+
+  &::before {
+    content: '\2717';
+    color: var(--log-error-fg);
+    opacity: 1;
+  }
+}
