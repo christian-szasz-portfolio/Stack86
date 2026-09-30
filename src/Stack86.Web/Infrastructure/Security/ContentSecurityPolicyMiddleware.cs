@@ -7,8 +7,10 @@ using Microsoft.Extensions.Options;
 using Stack86.Common.Security.Options;
 
 /// <summary>
-/// Per-request CSP nonce + Content-Security-Policy header. Monaco editor requires
-/// <c>wasm-unsafe-eval</c>; everything else uses script/style nonces.
+/// Per-request CSP nonce + Content-Security-Policy header. Scripts use a nonce; Monaco needs
+/// <c>wasm-unsafe-eval</c> for its WebAssembly and injects inline styles it cannot nonce, so
+/// <c>style-src</c> allows <c>'unsafe-inline'</c> and carries no nonce (a style nonce would make
+/// the browser ignore <c>'unsafe-inline'</c> and block every one of Monaco's inline styles).
 /// </summary>
 public sealed class ContentSecurityPolicyMiddleware(RequestDelegate next, IOptions<SecurityHeadersOptions> options)
 {
@@ -39,7 +41,7 @@ public sealed class ContentSecurityPolicyMiddleware(RequestDelegate next, IOptio
         var csp =
             $"default-src 'self'; " +
             $"script-src 'self' 'nonce-{nonce}' 'wasm-unsafe-eval'; " +
-            $"style-src 'self' 'nonce-{nonce}' 'unsafe-inline'; " +
+            $"style-src 'self' 'unsafe-inline'; " +
             $"img-src 'self' data: blob:; " +
             $"font-src 'self' data:; " +
             $"connect-src {connectSrc}; " +
