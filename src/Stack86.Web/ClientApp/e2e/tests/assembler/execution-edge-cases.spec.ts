@@ -3,7 +3,7 @@ import { setMonacoValue, waitForMonacoReady } from '../../utils/monaco';
 
 test.describe('Execution engine — edge cases', () => {
   test('reset returns CPU to initial state', async ({ page }) => {
-    await page.goto('/assembler');
+    await page.goto('/8086-emulator');
     await waitForMonacoReady(page);
     await setMonacoValue(page, null, `MOV AX, 99\nHLT`);
     await page.locator('[data-testid="asm-assemble-btn"] button').click();
@@ -20,7 +20,7 @@ loop_top:
   NOP
   LOOP loop_top
   HLT`;
-    await page.goto('/assembler');
+    await page.goto('/8086-emulator');
     await waitForMonacoReady(page);
     await setMonacoValue(page, null, LOOP);
     await page.locator('[data-testid="asm-assemble-btn"] button').click();
@@ -40,7 +40,7 @@ loop_top:
 
   test('division by zero halts with error', async ({ page }) => {
     const SRC = `MOV AX, 100\nMOV BX, 0\nDIV BX\nHLT`;
-    await page.goto('/assembler');
+    await page.goto('/8086-emulator');
     await waitForMonacoReady(page);
     await setMonacoValue(page, null, SRC);
     await page.locator('[data-testid="asm-assemble-btn"] button').click();
@@ -50,7 +50,7 @@ loop_top:
   });
 
   test('changing execution speed unit', async ({ page }) => {
-    await page.goto('/assembler');
+    await page.goto('/8086-emulator');
     await waitForMonacoReady(page);
     const unit = page.locator('[data-testid="asm-speed-unit"] select, [data-testid="asm-speed-unit"]').first();
     if (await unit.count() > 0) {
@@ -67,7 +67,7 @@ loop_top:
   });
 
   test('all 10 sample programs assemble without error', async ({ page }) => {
-    await page.goto('/assembler');
+    await page.goto('/8086-emulator');
     await waitForMonacoReady(page);
     const dropdownBtn = page.locator('[data-testid="asm-sample-dropdown"] button').first();
     await dropdownBtn.click();

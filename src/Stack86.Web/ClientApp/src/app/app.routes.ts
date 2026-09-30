@@ -9,7 +9,7 @@ export const appRoutes: Routes = [
       ),
   },
   {
-    path: 'assembler',
+    path: '8086-emulator',
     loadChildren: () =>
       import('./features/assembler/assembler.routes').then(
         (m) => m.assemblerRoutes,
@@ -17,11 +17,11 @@ export const appRoutes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'assembler',
+    redirectTo: '8086-emulator',
     pathMatch: 'full',
   },
   {
     path: '**',
-    redirectTo: 'assembler',
+    redirectTo: '8086-emulator',
   },
 ];

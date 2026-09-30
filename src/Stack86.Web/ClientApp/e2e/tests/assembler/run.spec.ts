@@ -6,7 +6,7 @@ HLT`;
 
 test.describe('Assembler — run', () => {
   test('run executes to HLT and updates registers', async ({ page }) => {
-    await page.goto('/assembler');
+    await page.goto('/8086-emulator');
     await waitForMonacoReady(page);
     await setMonacoValue(page, null, HLT_ONLY);
     await page.locator('[data-testid="asm-assemble-btn"] button').click();
@@ -18,7 +18,7 @@ test.describe('Assembler — run', () => {
 
 test.describe('Assembler — flags after CMP', () => {
   test('CMP equal sets ZF', async ({ page }) => {
-    await page.goto('/assembler');
+    await page.goto('/8086-emulator');
     await waitForMonacoReady(page);
     await setMonacoValue(page, null, `MOV AX, 5\nCMP AX, 5\nHLT`);
     await page.locator('[data-testid="asm-assemble-btn"] button').click();

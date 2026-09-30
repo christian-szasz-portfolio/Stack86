@@ -2,7 +2,7 @@ import { test, expect } from '../../fixtures';
 
 test.describe('Assembler file menu', () => {
   test('file menu opens and shows items', async ({ page }) => {
-    await page.goto('/assembler');
+    await page.goto('/8086-emulator');
     const trigger = page.locator('[data-testid="asm-file-menu-trigger"]');
     await trigger.waitFor({ state: 'visible', timeout: 15_000 });
     await trigger.click();
@@ -14,7 +14,7 @@ test.describe('Assembler file menu', () => {
   });
 
   test('file menu closes when clicking outside', async ({ page }) => {
-    await page.goto('/assembler');
+    await page.goto('/8086-emulator');
     const trigger = page.locator('[data-testid="asm-file-menu-trigger"]');
     await trigger.waitFor({ state: 'visible', timeout: 15_000 });
     await trigger.click();
@@ -24,7 +24,7 @@ test.describe('Assembler file menu', () => {
   });
 
   test('file menu closes on Escape', async ({ page }) => {
-    await page.goto('/assembler');
+    await page.goto('/8086-emulator');
     const trigger = page.locator('[data-testid="asm-file-menu-trigger"]');
     await trigger.waitFor({ state: 'visible', timeout: 15_000 });
     await trigger.click();
@@ -34,7 +34,7 @@ test.describe('Assembler file menu', () => {
   });
 
   test('Export ASM triggers download', async ({ page }) => {
-    await page.goto('/assembler');
+    await page.goto('/8086-emulator');
     const trigger = page.locator('[data-testid="asm-file-menu-trigger"]');
     await trigger.waitFor({ state: 'visible', timeout: 15_000 });
     await trigger.click();
@@ -47,7 +47,7 @@ test.describe('Assembler file menu', () => {
   });
 
   test('Speed control updates label', async ({ page }) => {
-    await page.goto('/assembler');
+    await page.goto('/8086-emulator');
     const speedInput = page.locator('[data-testid="asm-speed-input"]');
     await speedInput.waitFor({ state: 'visible', timeout: 15_000 });
     await speedInput.fill('100');

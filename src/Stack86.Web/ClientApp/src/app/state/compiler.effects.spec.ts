@@ -182,7 +182,7 @@ describe('CompilerEffects', () => {
       const [asm, origin] = bridge.loadAssemblyIntoAssembler.mock.calls[0];
       expect(asm).toBe('MOV AX, 1');
       expect(origin.language).toBe(SupportedLanguage.C);
-      expect(navigate).toHaveBeenCalledWith(['/assembler']);
+      expect(navigate).toHaveBeenCalledWith(['/8086-emulator']);
       sub.unsubscribe();
     });
   });

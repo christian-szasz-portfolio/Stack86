@@ -10,7 +10,7 @@ INT 21h`;
 
 test.describe('Assembler — INT 21h output', () => {
   test('AH=02h character output appears in Output tab', async ({ page }) => {
-    await page.goto('/assembler');
+    await page.goto('/8086-emulator');
     await waitForMonacoReady(page);
     await setMonacoValue(page, null, PRINT_A);
     await page.locator('[data-testid="asm-assemble-btn"] button').click();

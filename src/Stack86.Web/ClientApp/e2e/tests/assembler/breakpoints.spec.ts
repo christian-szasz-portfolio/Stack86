@@ -40,7 +40,7 @@ async function clickGlyphMarginAtLine(
 
 test.describe('Assembler — breakpoints', () => {
   test('toggle breakpoint via glyph margin click', async ({ page }) => {
-    await page.goto('/assembler');
+    await page.goto('/8086-emulator');
     await waitForMonacoReady(page);
     await setMonacoValue(page, null, PROG);
     // Wait for editor to settle after setValue
@@ -56,7 +56,7 @@ test.describe('Assembler — breakpoints', () => {
   });
 
   test('run pauses at breakpoint', async ({ page }) => {
-    await page.goto('/assembler');
+    await page.goto('/8086-emulator');
     await waitForMonacoReady(page);
     await setMonacoValue(page, null, PROG);
     await page.waitForTimeout(300);
@@ -71,7 +71,7 @@ test.describe('Assembler — breakpoints', () => {
   });
 
   test('keyboard shortcuts F5/F10/F6/Shift+F5 are wired', async ({ page }) => {
-    await page.goto('/assembler');
+    await page.goto('/8086-emulator');
     await waitForMonacoReady(page);
     await setMonacoValue(page, null, PROG);
     await page.locator('[data-testid="asm-assemble-btn"] button').click();
@@ -85,7 +85,7 @@ test.describe('Assembler — breakpoints', () => {
   });
 
   test('Ctrl+Enter reloads program', async ({ page }) => {
-    await page.goto('/assembler');
+    await page.goto('/8086-emulator');
     await waitForMonacoReady(page);
     await setMonacoValue(page, null, PROG);
     await page.locator('.monaco-editor').first().click();

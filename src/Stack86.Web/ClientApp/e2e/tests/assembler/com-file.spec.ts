@@ -35,7 +35,7 @@ async function installFilePatches(page: import('@playwright/test').Page): Promis
 test.describe('COM file — export/import', () => {
   test('export COM after assembling a program', async ({ page }) => {
     await installFilePatches(page);
-    await page.goto('/assembler');
+    await page.goto('/8086-emulator');
     await waitForMonacoReady(page);
     await setMonacoValue(page, null, SIMPLE);
     await page.locator('[data-testid="asm-assemble-btn"] button').click();
@@ -63,7 +63,7 @@ test.describe('COM file — export/import', () => {
 
   test('export ASM downloads source', async ({ page }) => {
     await installFilePatches(page);
-    await page.goto('/assembler');
+    await page.goto('/8086-emulator');
     await waitForMonacoReady(page);
     await setMonacoValue(page, null, SIMPLE);
     await page.locator('[data-testid="asm-file-menu-trigger"]').click();
@@ -72,7 +72,7 @@ test.describe('COM file — export/import', () => {
 
   test('import COM loads into editor', async ({ page }) => {
     await installFilePatches(page);
-    await page.goto('/assembler');
+    await page.goto('/8086-emulator');
     await waitForMonacoReady(page);
     await page.locator('[data-testid="asm-file-menu-trigger"]').click();
     await page.locator('[data-testid="asm-file-menu-item-importCom"]').click();
@@ -119,7 +119,7 @@ MOV AH, 0x4C
 INT 0x21
 `;
     await installFilePatches(page);
-    await page.goto('/assembler');
+    await page.goto('/8086-emulator');
     await waitForMonacoReady(page);
     await setMonacoValue(page, null, RICH);
     await page.locator('[data-testid="asm-assemble-btn"] button').click();
@@ -172,7 +172,7 @@ INT 0x21
         orig.call(this);
       };
     }, bytes);
-    await page.goto('/assembler');
+    await page.goto('/8086-emulator');
     await waitForMonacoReady(page);
     await page.locator('[data-testid="asm-file-menu-trigger"]').click();
     await page.locator('[data-testid="asm-file-menu-item-importCom"]').click();
@@ -197,7 +197,7 @@ INT 0x21
         origClick.call(this);
       };
     });
-    await page.goto('/assembler');
+    await page.goto('/8086-emulator');
     await waitForMonacoReady(page);
     await page.locator('[data-testid="asm-file-menu-trigger"]').click();
     await page.locator('[data-testid="asm-file-menu-item-importAsm"]').click();

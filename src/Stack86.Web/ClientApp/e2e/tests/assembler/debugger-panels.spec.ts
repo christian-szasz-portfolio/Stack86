@@ -2,7 +2,7 @@ import { test, expect } from '../../fixtures';
 
 test.describe('Debugger panels', () => {
   test('registers panel renders all 8086 registers', async ({ page }) => {
-    await page.goto('/assembler');
+    await page.goto('/8086-emulator');
     await expect(page.locator('[data-testid="asm-registers"]')).toBeVisible({ timeout: 15_000 });
     for (const reg of ['AX', 'BX', 'CX', 'DX', 'SP', 'BP', 'SI', 'DI', 'IP']) {
       await expect(page.locator(`[data-testid="asm-register-${reg}"]`)).toBeVisible();
@@ -10,7 +10,7 @@ test.describe('Debugger panels', () => {
   });
 
   test('flags panel shows all status flags', async ({ page }) => {
-    await page.goto('/assembler');
+    await page.goto('/8086-emulator');
     await expect(page.locator('[data-testid="asm-flags"]')).toBeVisible({ timeout: 15_000 });
     for (const flag of ['CF', 'PF', 'AF', 'ZF', 'SF', 'OF', 'DF', 'IF', 'TF']) {
       const flagEl = page.locator(`[data-testid="asm-flag-${flag}"]`);
@@ -21,13 +21,13 @@ test.describe('Debugger panels', () => {
   });
 
   test('memory view loads with toolbar and content', async ({ page }) => {
-    await page.goto('/assembler');
+    await page.goto('/8086-emulator');
     await expect(page.locator('[data-testid="asm-memory-toolbar"]')).toBeVisible({ timeout: 15_000 });
     await expect(page.locator('[data-testid="asm-memory-content"]')).toBeVisible();
   });
 
   test('memory address input jumps to address', async ({ page }) => {
-    await page.goto('/assembler');
+    await page.goto('/8086-emulator');
     const input = page.locator('[data-testid="asm-memory-address-input"]');
     await input.waitFor({ state: 'visible', timeout: 15_000 });
     await input.fill('0100');
@@ -36,7 +36,7 @@ test.describe('Debugger panels', () => {
   });
 
   test('memory view jump buttons', async ({ page }) => {
-    await page.goto('/assembler');
+    await page.goto('/8086-emulator');
     await page.locator('[data-testid="asm-memory-jump-stack"]').waitFor({ state: 'visible', timeout: 15_000 });
     await page.locator('[data-testid="asm-memory-jump-stack"]').click();
     await page.locator('[data-testid="asm-memory-jump-zero"]').click();
@@ -45,12 +45,12 @@ test.describe('Debugger panels', () => {
   });
 
   test('stack view renders content panel', async ({ page }) => {
-    await page.goto('/assembler');
+    await page.goto('/8086-emulator');
     await expect(page.locator('[data-testid="asm-stack-content"]')).toBeVisible({ timeout: 15_000 });
   });
 
   test('stack populates after PUSH operations', async ({ page }) => {
-    await page.goto('/assembler');
+    await page.goto('/8086-emulator');
     // Load Stack Operations sample
     await page.locator('[data-testid="asm-sample-dropdown"] button').first().click();
     await page.locator('.dropdown__panel .dropdown__item', { hasText: 'Stack Operations' }).first().click();

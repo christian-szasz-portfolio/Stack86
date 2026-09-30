@@ -8,7 +8,7 @@ HLT`;
 
 test.describe('Assembler — assemble + step', () => {
   test('assemble button parses code and shows registers', async ({ page }) => {
-    await page.goto('/assembler');
+    await page.goto('/8086-emulator');
     await expect(page.locator('[data-testid="asm-assemble-btn"]')).toBeVisible({ timeout: 15_000 });
 
     await waitForMonacoReady(page);
@@ -20,7 +20,7 @@ test.describe('Assembler — assemble + step', () => {
   });
 
   test('step advances IP and updates AX after ADD', async ({ page }) => {
-    await page.goto('/assembler');
+    await page.goto('/8086-emulator');
     await waitForMonacoReady(page);
     await setMonacoValue(page, null, SIMPLE_ASM);
     await page.locator('[data-testid="asm-assemble-btn"] button').click();
@@ -35,7 +35,7 @@ test.describe('Assembler — assemble + step', () => {
   });
 
   test('reset clears computed state', async ({ page }) => {
-    await page.goto('/assembler');
+    await page.goto('/8086-emulator');
     await waitForMonacoReady(page);
     await setMonacoValue(page, null, SIMPLE_ASM);
     await page.locator('[data-testid="asm-assemble-btn"] button').click();

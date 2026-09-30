@@ -14,7 +14,7 @@ const SAMPLE_NAMES = [
 ];
 
 async function loadSample(page: Page, name: string): Promise<void> {
-  await page.goto('/assembler');
+  await page.goto('/8086-emulator');
   await page.locator('[data-testid="asm-sample-dropdown"]').waitFor({ state: 'visible', timeout: 15_000 });
   await page.locator('[data-testid="asm-sample-dropdown"] button').first().click();
   await page.locator('.dropdown__panel .dropdown__item', { hasText: name }).first().click();

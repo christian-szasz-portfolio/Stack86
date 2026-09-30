@@ -16,7 +16,7 @@ test.describe('Handlers — deep branch coverage', () => {
 LEA DI, [0x600]
 LEA BX, [0x100]
 HLT`;
-    await page.goto('/assembler');
+    await page.goto('/8086-emulator');
     await waitForMonacoReady(page);
     await setMonacoValue(page, null, SRC);
     await page.locator('[data-testid="asm-assemble-btn"] button').click();
@@ -54,7 +54,7 @@ INT 0x86
 ADD SP, 6
 
 HLT`;
-    await page.goto('/assembler');
+    await page.goto('/8086-emulator');
     await waitForMonacoReady(page);
     await setMonacoValue(page, null, SRC);
     await page.locator('[data-testid="asm-assemble-btn"] button').click();
@@ -72,7 +72,7 @@ MOV AH, 0x08
 INT 0x86
 ADD SP, 2
 HLT`;
-    await page.goto('/assembler');
+    await page.goto('/8086-emulator');
     await waitForMonacoReady(page);
     await setMonacoValue(page, null, SRC);
     await page.locator('[data-testid="asm-assemble-btn"] button').click();
@@ -102,7 +102,7 @@ MOV AX, 0
 MOV BX, 0
 DIV BX             ; div-by-zero — engine should halt
 HLT`;
-    await page.goto('/assembler');
+    await page.goto('/8086-emulator');
     await waitForMonacoReady(page);
     await setMonacoValue(page, null, SRC);
     await page.locator('[data-testid="asm-assemble-btn"] button').click();
@@ -167,7 +167,7 @@ DEC CX
 LOOP loop_start
 
 HLT`;
-    await page.goto('/assembler');
+    await page.goto('/8086-emulator');
     await waitForMonacoReady(page);
     await setMonacoValue(page, null, SRC);
     await page.locator('[data-testid="asm-assemble-btn"] button').click();
@@ -178,7 +178,7 @@ HLT`;
 
   test('reset + reload flow exercises emulator.effects reset path', async ({ page }) => {
     const SRC = `MOV AX, 1\nMOV BX, 2\nADD AX, BX\nHLT`;
-    await page.goto('/assembler');
+    await page.goto('/8086-emulator');
     await waitForMonacoReady(page);
     await setMonacoValue(page, null, SRC);
     await page.locator('[data-testid="asm-assemble-btn"] button').click();

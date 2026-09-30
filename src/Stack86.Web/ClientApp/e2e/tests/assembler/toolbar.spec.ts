@@ -2,7 +2,7 @@ import { test, expect } from '../../fixtures';
 
 test.describe('Assembler — toolbar controls', () => {
   test('renders all primary toolbar buttons', async ({ page }) => {
-    await page.goto('/assembler');
+    await page.goto('/8086-emulator');
     await expect(page.locator('[data-testid="asm-assemble-btn"]')).toBeVisible({ timeout: 15_000 });
     await expect(page.locator('[data-testid="asm-run-btn"]')).toBeVisible();
     await expect(page.locator('[data-testid="asm-step-btn"]')).toBeVisible();
@@ -13,7 +13,7 @@ test.describe('Assembler — toolbar controls', () => {
   });
 
   test('speed slider updates label', async ({ page }) => {
-    await page.goto('/assembler');
+    await page.goto('/8086-emulator');
     const slider = page.locator('[data-testid="asm-speed-input"]');
     await slider.evaluate((el: HTMLInputElement) => {
       el.value = '50';
@@ -23,7 +23,7 @@ test.describe('Assembler — toolbar controls', () => {
   });
 
   test('data-flow toggle is clickable', async ({ page }) => {
-    await page.goto('/assembler');
+    await page.goto('/8086-emulator');
     const toggle = page.locator('[data-testid="asm-data-flow-toggle"] button');
     await expect(toggle).toBeVisible();
     await toggle.click();

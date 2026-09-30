@@ -39,7 +39,7 @@ const INT86_SWEEP = makeInt86Sweep();
 
 test.describe('INT 86h — service handlers', () => {
   test('sweeps every service AH=01..2A', async ({ page }) => {
-    await page.goto('/assembler');
+    await page.goto('/8086-emulator');
     await waitForMonacoReady(page);
     await setMonacoValue(page, null, INT86_SWEEP);
     await page.locator('[data-testid="asm-assemble-btn"] button').click();
@@ -88,7 +88,7 @@ INT 0x86
 ADD SP, 2
 
 HLT`;
-    await page.goto('/assembler');
+    await page.goto('/8086-emulator');
     await waitForMonacoReady(page);
     await setMonacoValue(page, null, SRC);
     await page.locator('[data-testid="asm-assemble-btn"] button').click();
@@ -109,7 +109,7 @@ MOV AH, 0x09
 INT 0x21
 MOV AH, 0x4C
 INT 0x21`;
-    await page.goto('/assembler');
+    await page.goto('/8086-emulator');
     await waitForMonacoReady(page);
     await setMonacoValue(page, null, SRC);
     await page.locator('[data-testid="asm-assemble-btn"] button').click();

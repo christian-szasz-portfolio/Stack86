@@ -3,7 +3,7 @@ import { setMonacoValue, waitForMonacoReady } from '../../utils/monaco';
 
 test.describe('Parser — error reporting', () => {
   test('unknown mnemonic surfaces in console list', async ({ page }) => {
-    await page.goto('/assembler');
+    await page.goto('/8086-emulator');
     await waitForMonacoReady(page);
     await setMonacoValue(page, null, `FOOBAR AX, 1\nHLT`);
     await page.locator('[data-testid="asm-assemble-btn"] button').click();
@@ -11,7 +11,7 @@ test.describe('Parser — error reporting', () => {
   });
 
   test('runs valid simple program', async ({ page }) => {
-    await page.goto('/assembler');
+    await page.goto('/8086-emulator');
     await waitForMonacoReady(page);
     await setMonacoValue(page, null, `MOV AX, 7\nMOV BX, AX\nADD AX, BX\nHLT`);
     await page.locator('[data-testid="asm-assemble-btn"] button').click();
@@ -34,7 +34,7 @@ start_label:
   MOV DX, 1
 matched:
   HLT`;
-    await page.goto('/assembler');
+    await page.goto('/8086-emulator');
     await waitForMonacoReady(page);
     await setMonacoValue(page, null, SRC);
     await page.locator('[data-testid="asm-assemble-btn"] button').click();
@@ -52,7 +52,7 @@ HLT
 doubler:
   ADD AX, AX
   RET`;
-    await page.goto('/assembler');
+    await page.goto('/8086-emulator');
     await waitForMonacoReady(page);
     await setMonacoValue(page, null, SRC);
     await page.locator('[data-testid="asm-assemble-btn"] button').click();

@@ -89,7 +89,7 @@ export class CompilerEffects {
               }
             }
             this.assemblerBridge.loadAssemblyIntoAssembler(assembly, { language, sampleName });
-            this.router.navigate(['/assembler']);
+            this.router.navigate(['/8086-emulator']);
           }
         }),
       ),

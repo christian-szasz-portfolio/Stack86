@@ -31,7 +31,7 @@ describe('NavigationComponent', () => {
     const tabs: HTMLAnchorElement[] = Array.from(
       fixture.nativeElement.querySelectorAll('.shell-nav__tab'),
     );
-    const assemblerTab = tabs.find((t) => t.textContent?.includes('Assembler'));
+    const assemblerTab = tabs.find((t) => t.textContent?.includes('Emulator'));
     expect(assemblerTab).toBeTruthy();
   });
 
@@ -58,8 +58,8 @@ describe('NavigationComponent', () => {
     const tabs: HTMLAnchorElement[] = Array.from(
       fixture.nativeElement.querySelectorAll('.shell-nav__tab'),
     );
-    const assemblerTab = tabs.find((t) => t.textContent?.includes('Assembler'));
-    expect(assemblerTab?.getAttribute('href')).toBe('/assembler');
+    const assemblerTab = tabs.find((t) => t.textContent?.includes('Emulator'));
+    expect(assemblerTab?.getAttribute('href')).toBe('/8086-emulator');
   });
 
   it('should link compiler tab to /compiler', () => {

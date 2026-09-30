@@ -22,6 +22,6 @@ test.describe('Compile flow — success', () => {
     await page.locator('[data-testid="compile-btn"] button').click();
     await page.locator('[data-testid="compile-load-into-asm-btn"]').waitFor({ state: 'visible', timeout: 10_000 });
     await page.locator('[data-testid="compile-load-into-asm-btn"] button').click();
-    await expect(page).toHaveURL(/\/assembler/, { timeout: 10_000 });
+    await expect(page).toHaveURL(/\/8086-emulator/, { timeout: 10_000 });
   });
 });

@@ -119,7 +119,7 @@ INT 0x21
 test.describe('Assembler — opcode coverage', () => {
   test('runs kitchen-sink program to completion', async ({ page }) => {
     page.on('download', (d) => { d.cancel().catch(() => {}); });
-    await page.goto('/assembler');
+    await page.goto('/8086-emulator');
     await waitForMonacoReady(page);
     await setMonacoValue(page, null, KITCHEN_SINK);
     await page.locator('[data-testid="asm-assemble-btn"] button').click();
@@ -142,7 +142,7 @@ test.describe('Assembler — opcode coverage', () => {
   });
 
   test('step-by-step through kitchen-sink advances IP', async ({ page }) => {
-    await page.goto('/assembler');
+    await page.goto('/8086-emulator');
     await waitForMonacoReady(page);
     await setMonacoValue(page, null, KITCHEN_SINK);
     await page.locator('[data-testid="asm-assemble-btn"] button').click();
@@ -156,7 +156,7 @@ test.describe('Assembler — opcode coverage', () => {
 
   test('kitchen-sink with data-flow diagram enabled', async ({ page }) => {
     await page.setViewportSize({ width: 1600, height: 1000 });
-    await page.goto('/assembler');
+    await page.goto('/8086-emulator');
     await waitForMonacoReady(page);
     await setMonacoValue(page, null, KITCHEN_SINK);
     await page.locator('[data-testid="asm-data-flow-toggle"] button').click();
@@ -191,7 +191,7 @@ test.describe('Assembler — opcode coverage', () => {
 
 test.describe('Assembler — INT 21h I/O', () => {
   test('AH=01 reads a character from input', async ({ page }) => {
-    await page.goto('/assembler');
+    await page.goto('/8086-emulator');
     await waitForMonacoReady(page);
     await setMonacoValue(page, null, `MOV AH, 0x01\nINT 0x21\nMOV AH, 0x4C\nINT 0x21`);
     await page.locator('[data-testid="asm-assemble-btn"] button').click();
