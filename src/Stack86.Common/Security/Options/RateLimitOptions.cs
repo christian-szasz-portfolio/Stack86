@@ -17,6 +17,20 @@ public sealed class RateLimitOptions
     /// <summary>Gets or sets the compile endpoint limit per minute (CPU-heavy, kept stricter).</summary>
     public int CompileLimitPerMinute { get; set; } = 20;
 
+    /// <summary>
+    /// Gets or sets one shared ceiling on compile requests across every caller, per minute. A flood
+    /// spread over many addresses stays under each per-caller limit but together meets this one, so
+    /// the server's total compile load is bounded even under a distributed attack.
+    /// </summary>
+    public int CompileGlobalLimitPerMinute { get; set; } = 120;
+
+    /// <summary>
+    /// Gets or sets how many distinct callers the per-caller limiters track. Once reached, further
+    /// addresses share one overflow partition, so a flood of unique addresses cannot grow the
+    /// limiter's memory without bound.
+    /// </summary>
+    public int MaxTrackedCallers { get; set; } = 20_000;
+
     /// <summary>Gets or sets the queue limit for general API requests.</summary>
     public int GeneralApiQueueLimit { get; set; } = 2;
 
