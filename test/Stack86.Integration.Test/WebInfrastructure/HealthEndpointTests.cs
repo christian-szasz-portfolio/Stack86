@@ -45,6 +45,36 @@ public sealed class HealthEndpointTests : RestClientTestBase
         Assert.IsGreaterThanOrEqualTo(0, queued.GetInt32());
     }
 
+    /// <summary>The portfolio wakes the demo from its project page and must be able to read the answer.</summary>
+    [TestMethod]
+    public async Task Liveness_LetsThePortfolioReadIt()
+    {
+        // Arrange
+        using var request = new System.Net.Http.HttpRequestMessage(System.Net.Http.HttpMethod.Get, HealthEndpoints.LivenessPath);
+        request.Headers.Add("Origin", "https://christianszasz.dev");
+
+        // Act
+        using var response = await this.Client.SendAsync(request);
+
+        // Assert
+        Assert.AreEqual("https://christianszasz.dev", string.Join(",", response.Headers.GetValues("Access-Control-Allow-Origin")));
+    }
+
+    [TestMethod]
+    public async Task Liveness_StaysClosedToAnyOtherSite()
+    {
+        // Arrange
+        using var request = new System.Net.Http.HttpRequestMessage(System.Net.Http.HttpMethod.Get, HealthEndpoints.LivenessPath);
+        request.Headers.Add("Origin", "https://elsewhere.example");
+
+        // Act
+        using var response = await this.Client.SendAsync(request);
+
+        // Assert
+        Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
+        Assert.IsFalse(response.Headers.Contains("Access-Control-Allow-Origin"));
+    }
+
     private static async Task<string?> StatusOfAsync(System.Net.Http.HttpResponseMessage response)
     {
         using var document = JsonDocument.Parse(await response.Content.ReadAsStringAsync());

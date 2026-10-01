@@ -46,7 +46,7 @@ public static partial class Startup
         app.MapControllers();
 
         // No rate-limiting policy, so a probe never spends a caller's allowance.
-        app.MapStack86Health();
+        app.MapStack86Health(app.Configuration.GetSection(HealthEndpoints.WakeOriginsKey).Get<string[]>() ?? []);
 
         app.ConfigureStaticAssets();
 
