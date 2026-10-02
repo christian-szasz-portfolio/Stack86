@@ -45,7 +45,7 @@ public sealed class HealthEndpointTests : RestClientTestBase
         Assert.IsGreaterThanOrEqualTo(0, queued.GetInt32());
     }
 
-    /// <summary>The portfolio wakes the demo from its project page and must be able to read the answer.</summary>
+    /// <summary>The portfolio wakes the demo on landing and must be able to read the answer.</summary>
     [TestMethod]
     public async Task Liveness_LetsThePortfolioReadIt()
     {
