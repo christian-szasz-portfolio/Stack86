@@ -1,6 +1,9 @@
 import { Service } from '@angular/core';
 import type * as Monaco from 'monaco-editor';
 
+/** The face the editors ask for first, self-hosted in public/fonts. */
+export const EDITOR_FONT = "13px 'Cascadia Code'";
+
 @Service()
 export class MonacoEditorService {
   private monacoPromise: Promise<typeof Monaco> | null = null;
@@ -8,7 +11,8 @@ export class MonacoEditorService {
   public loadMonaco(): Promise<typeof Monaco> {
     if (!this.monacoPromise) {
       this.configureWorker();
-      this.monacoPromise = import('monaco-editor').then((m) => {
+      // The font loads first, or Monaco measures the fallback and the cursor drifts
+      this.monacoPromise = Promise.all([import('monaco-editor'), this.loadEditorFont()]).then(([m]) => {
         // Expose Monaco for e2e tests to drive the editor reliably across browsers.
         // Safe to expose: monaco-editor is a public library and exposes no app secrets.
         (globalThis as unknown as { __monaco__?: typeof Monaco }).__monaco__ = m;
@@ -16,6 +20,19 @@ export class MonacoEditorService {
       });
     }
     return this.monacoPromise;
+  }
+
+  /** Waits for the editor font; a browser without the Font Loading API, or a failed load, falls back silently. */
+  public loadEditorFont(): Promise<void> {
+    const fonts = (globalThis.document as Document | undefined)?.fonts;
+    if (!fonts) {
+      return Promise.resolve();
+    }
+
+    return fonts.load(EDITOR_FONT).then(
+      () => undefined,
+      () => undefined,
+    );
   }
 
   public dispose(editor: Monaco.editor.IStandaloneCodeEditor): void {
