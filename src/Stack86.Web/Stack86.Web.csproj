@@ -43,7 +43,7 @@
     <None Include="..\Stack86.Logic\Languages\TypeScript\transpile.cjs" Link="transpile.cjs" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Common.Diagnostics" Version="0.4.0" />
+    <PackageReference Include="Common.Diagnostics" Version="0.6.0" />
     <PackageReference Include="Common.Diagnostics.Azure" Version="0.1.2" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.5" />
     <!-- Direct pin only to lift the transitive Microsoft.OpenApi off 2.0.0, which carries the
